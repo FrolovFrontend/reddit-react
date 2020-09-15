@@ -1,11 +1,15 @@
 import React from "react";
-import { Header } from "./Header";
+import "./main.global.css";
+
+import { Layout } from "./Layout";
+import { Header } from "./Header/";
+import { Content } from "./Content";
 
 export function App() {
   return (
-    <div>
+    <Layout>
       <Header />
-      <h1>Content</h1>
-    </div>  
+      <Content>Content</Content>
+    </Layout>
   );
 }
