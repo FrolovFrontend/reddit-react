@@ -1,0 +1,39 @@
+.karmaCounter > * + * {
+  padding: 0 0 0 4px;
+}
+
+.karmaValue {
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--grayC4);
+}
+
+svg.down {
+  transform: rotate(180deg);
+}
+
+@media all and (min-width: 1024px) {
+  .karmaCounter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .karmaCounter > * + * {
+    padding: 7px 0 0;
+  }
+
+  .karmaValue {
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--black);
+  }
+
+  .karmaCounter > button.up:hover > svg > path {
+    fill: var(--green);
+  }
+
+  .karmaCounter > button.down:hover > svg > path {
+    fill: var(--orange);
+  }
+}
