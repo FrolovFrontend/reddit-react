@@ -16,7 +16,7 @@ interface IGenericListProps {
 export function GenericList({ list }: IGenericListProps) {
   return (
     <>
-      {list.map(({ As = "div", text, onClick, className, id, href }) => {
+      {list.map(({ As = "div", text, onClick, className, id, href }) => (
         <As
           className={className}
           onClick={() => {
@@ -28,8 +28,8 @@ export function GenericList({ list }: IGenericListProps) {
           href={href}
         >
           {text}
-        </As>;
-      })}
+        </As>
+      ))}
     </>
   );
 }
