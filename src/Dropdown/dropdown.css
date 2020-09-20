@@ -5,6 +5,7 @@
 
 .listContainer {
   position: relative;
+  z-index: 10;
 }
 
 .list {
