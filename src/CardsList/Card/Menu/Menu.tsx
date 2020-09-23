@@ -1,18 +1,23 @@
 import React from "react";
-import styles from "./menu.css";
+import { MenuIcon } from "../../../Icons";
 import { Dropdown } from "../../../Dropdown";
-import { MenuButton } from "./MenuButton";
-import { MenuList } from "./MenuList";
+import styles from "./menu.css";
+import { MenuItemsList } from "./MenuItemsList";
 
 export function Menu() {
   return (
     <div className={styles.menu}>
       <Dropdown
-        onOpen={() => console.log("opened")}
-        onClose={() => console.log("closed")}
-        button={<MenuButton />}
+        button={
+          <button className={styles.menuButton}>
+            <MenuIcon />
+          </button>
+        }
       >
-        <MenuList />
+        <div className={styles.dropdown}>
+          <MenuItemsList postId="#id" />
+          <button className={styles.closeButton}>Закрыть</button>
+        </div>
       </Dropdown>
     </div>
   );
