@@ -2,7 +2,8 @@ import React from "react";
 
 interface IItem {
   id: string;
-  text: string;
+  icon?: React.ReactNode;
+  text: string | React.ReactNode;
   onClick?: (id: string) => void;
   className?: string;
   As?: "a" | "li" | "button" | "div";
@@ -16,7 +17,7 @@ interface IGenericListProps {
 export function GenericList({ list }: IGenericListProps) {
   return (
     <>
-      {list.map(({ As = "div", text, onClick, className, id, href }) => (
+      {list.map(({ As = "div", icon, text, onClick, className, id, href }) => (
         <As
           className={className}
           onClick={() => {
@@ -27,6 +28,7 @@ export function GenericList({ list }: IGenericListProps) {
           key={id}
           href={href}
         >
+          {icon}
           {text}
         </As>
       ))}
