@@ -1,0 +1,32 @@
+.s12,
+.s12 > svg {
+  width: 12px;
+  height: 12px;
+}
+.s16,
+.s16 > svg {
+  width: 16px;
+  height: 16px;
+}
+.s20,
+.s20 > svg {
+  width: 20px;
+  height: 20px;
+}
+.s24,
+.s24 > svg {
+  width: 24px;
+  height: 24px;
+}
+.s32,
+.s32 > svg {
+  width: 32px;
+  height: 32px;
+}
+.s40,
+.s40 > svg {
+  width: 40px;
+  height: 40px;
+}
+
+
