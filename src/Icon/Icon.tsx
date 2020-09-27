@@ -19,11 +19,11 @@ export enum EIcons {
   warning,
 }
 
-type TSizes = 12 | 16 | 20 | 24 | 32 | 40;
+type TSizes = 12 | 14 | 16 | 20 | 24 | 32 | 40;
 
 interface IIconProps {
   name: EIcons;
-  size?: TSizes;
+  size: TSizes;
   mobileSize?: TSizes;
   tabletSize?: TSizes;
   desktopSize?: TSizes;
@@ -47,14 +47,15 @@ const getIcon = (name: EIcons) => {
 };
 
 export function Icon(props: IIconProps) {
-  const { name, size = 16, mobileSize, tabletSize, desktopSize } = props;
+  const { name, size, mobileSize, tabletSize, desktopSize } = props;
 
   const classes = classNames(
+    styles.icon,
     styles[`s${size}`],
     { [styles[`m${mobileSize}`]]: mobileSize },
     { [styles[`t${tabletSize}`]]: tabletSize },
     { [styles[`d${desktopSize}`]]: desktopSize }
   );
 
-  return <span className={classes}>{getIcon(name)}</span>;
+  return <div className={classes}>{getIcon(name)}</div>;
 }

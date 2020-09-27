@@ -1,13 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import { GenericList } from "../../../../GenericList/GenericList";
-import {
-  BlockIcon,
-  CommentsIcon,
-  SavingIcon,
-  SharedIcon,
-  WarningIcon,
-} from "../../../../Icons";
+import { EIcons, Icon } from "../../../../Icon";
 import { EColor, Text } from "../../../../Text";
 import { merge } from "../../../../utils/js/merge";
 import { generateId } from "../../../../utils/react/generateRandomIndex";
@@ -17,7 +11,7 @@ const ITEMS_LIST = [
   {
     As: "li" as const,
     className: classNames(styles.menuItem, styles.menuItemComments),
-    icon: <CommentsIcon />,
+    icon: <Icon name={EIcons.comments} size={14} />,
     text: (
       <Text size={14} mobileSize={12} color={EColor.gray99}>
         Комментарии
@@ -27,7 +21,7 @@ const ITEMS_LIST = [
   {
     As: "li" as const,
     className: classNames(styles.menuItem, styles.menuItemShared),
-    icon: <SharedIcon />,
+    icon: <Icon name={EIcons.shared} size={14} />,
     text: (
       <Text size={14} mobileSize={12} color={EColor.gray99}>
         Поделиться
@@ -37,7 +31,7 @@ const ITEMS_LIST = [
   {
     As: "li" as const,
     className: styles.menuItem,
-    icon: <BlockIcon />,
+    icon: <Icon name={EIcons.block} size={14} />,
     text: (
       <Text size={14} mobileSize={12} color={EColor.gray99}>
         Скрыть
@@ -47,7 +41,7 @@ const ITEMS_LIST = [
   {
     As: "li" as const,
     className: classNames(styles.menuItem, styles.menuItemSave),
-    icon: <SavingIcon />,
+    icon: <Icon name={EIcons.saving} size={14} />,
     text: (
       <Text size={14} mobileSize={12} color={EColor.gray99}>
         Сохранить
@@ -57,7 +51,7 @@ const ITEMS_LIST = [
   {
     As: "li" as const,
     className: styles.menuItem,
-    icon: <WarningIcon />,
+    icon: <Icon name={EIcons.warning} size={14} />,
     text: (
       <Text size={14} mobileSize={12} color={EColor.gray99}>
         Пожаловаться

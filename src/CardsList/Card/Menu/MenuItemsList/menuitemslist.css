@@ -31,7 +31,7 @@
 .menuItem:hover svg > * {
   fill: var(--orange);
 }
-.menuItem > svg + span {
+.menuItem > span {
   margin-left: 7px;
 }
 

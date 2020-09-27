@@ -1,7 +1,17 @@
+.icon {
+  display: flex;
+  align-items: center;
+}
+
 .s12,
 .s12 > svg {
   width: 12px;
   height: 12px;
+}
+.s14,
+.s14 > svg {
+  width: 14px;
+  height: 14px;
 }
 .s16,
 .s16 > svg {
@@ -29,4 +39,116 @@
   height: 40px;
 }
 
+@media all and (min-width: 320px) and (max-width: 1023px) {
+  .m12,
+  .m12 > svg {
+    width: 12px;
+    height: 12px;
+  }
+  .m14,
+  .m14 > svg {
+    width: 14px;
+    height: 14px;
+  }
+  .m16,
+  .m16 > svg {
+    width: 16px;
+    height: 16px;
+  }
+  .m20,
+  .m20 > svg {
+    width: 20px;
+    height: 20px;
+  }
+  .m24,
+  .m24 > svg {
+    width: 24px;
+    height: 24px;
+  }
+  .m32,
+  .m32 > svg {
+    width: 32px;
+    height: 32px;
+  }
+  .m40,
+  .m40 > svg {
+    width: 40px;
+    height: 40px;
+  }
+}
 
+@media all and (min-width: 1024px) and (max-width: 1539px) {
+  .t12,
+  .t12 > svg {
+    width: 12px;
+    height: 12px;
+  }
+  .t14,
+  .t14 > svg {
+    width: 14px;
+    height: 14px;
+  }
+  .t16,
+  .t16 > svg {
+    width: 16px;
+    height: 16px;
+  }
+  .t20,
+  .t20 > svg {
+    width: 20px;
+    height: 20px;
+  }
+  .t24,
+  .t24 > svg {
+    width: 24px;
+    height: 24px;
+  }
+  .t32,
+  .t32 > svg {
+    width: 32px;
+    height: 32px;
+  }
+  .t40,
+  .t40 > svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media all and (min-width: 1540px) {
+  .d12,
+  .d12 > svg {
+    width: 12px;
+    height: 12px;
+  }
+  .d14,
+  .d14 > svg {
+    width: 14px;
+    height: 14px;
+  }
+  .d16,
+  .d16 > svg {
+    width: 16px;
+    height: 16px;
+  }
+  .d20,
+  .d20 > svg {
+    width: 20px;
+    height: 20px;
+  }
+  .d24,
+  .d24 > svg {
+    width: 24px;
+    height: 24px;
+  }
+  .d32,
+  .d32 > svg {
+    width: 32px;
+    height: 32px;
+  }
+  .d40,
+  .d40 > svg {
+    width: 40px;
+    height: 40px;
+  }
+}
