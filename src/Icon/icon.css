@@ -38,6 +38,11 @@
   width: 40px;
   height: 40px;
 }
+.s50,
+.s50 > svg {
+  width: 50px;
+  height: 50px;
+}
 
 @media all and (min-width: 320px) and (max-width: 1023px) {
   .m12,
@@ -74,6 +79,11 @@
   .m40 > svg {
     width: 40px;
     height: 40px;
+  }
+  .m50,
+  .m50 > svg {
+    width: 50px;
+    height: 50px;
   }
 }
 
@@ -113,6 +123,11 @@
     width: 40px;
     height: 40px;
   }
+  .t50,
+  .t50 > svg {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 @media all and (min-width: 1540px) {
@@ -150,5 +165,10 @@
   .d40 > svg {
     width: 40px;
     height: 40px;
+  }
+  .d50,
+  .d50 > svg {
+    width: 50px;
+    height: 50px;
   }
 }

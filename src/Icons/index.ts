@@ -4,3 +4,4 @@ export * from "./WarningIcon";
 export * from "./CommentsIcon";
 export * from "./SavingIcon";
 export * from "./SharedIcon";
+export * from "./AnonIcon";

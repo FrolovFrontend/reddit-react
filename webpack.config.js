@@ -1,5 +1,6 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const { DefinePlugin } = require("webpack");
 
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === "development";
@@ -37,7 +38,7 @@ module.exports = {
               modules: {
                 mode: "local",
                 localIdentName: "[name]__[local]--[hash:base64:5]",
-                // [имя файла]__[имя селектора]--[хэщ]
+                // [имя файла]__[имя селектора]--[хэш]
               },
             },
           },
@@ -53,6 +54,9 @@ module.exports = {
   plugins: [
     new HTMLWebpackPlugin({
       template: path.resolve(__dirname, "index.html"),
+    }),
+    new DefinePlugin({
+      "process.env.CLIENT_ID": `"${process.env.CLIENT_ID}"`,
     }),
   ],
   devServer: {

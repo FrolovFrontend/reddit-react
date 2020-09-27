@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import {
+  AnonIcon,
   BlockIcon,
   CommentsIcon,
   MenuIcon,
@@ -17,9 +18,10 @@ export enum EIcons {
   saving,
   shared,
   warning,
+  anon,
 }
 
-type TSizes = 12 | 14 | 16 | 20 | 24 | 32 | 40;
+type TSizes = 12 | 14 | 16 | 20 | 24 | 32 | 40 | 50;
 
 interface IIconProps {
   name: EIcons;
@@ -43,6 +45,8 @@ const getIcon = (name: EIcons) => {
       return <SharedIcon />;
     case EIcons.warning:
       return <WarningIcon />;
+    case EIcons.anon:
+      return <AnonIcon />;
   }
 };
 
