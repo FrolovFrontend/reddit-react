@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import queryString from 'query-string';
 
 export function useToken() {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState('');
 
   useEffect(() => {
-    const url = new URL(window.location.href);
+    const parsedHash = queryString.parse(location.hash);
+    //console.log(parsedHash);
 
-    //setToken(url.searchParams.get("token");
-
-    console.log(url.searchParams.get("token"));
+    setToken(parsedHash.access_token);
   }, [token]);
 
   return [token];
