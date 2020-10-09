@@ -6,9 +6,8 @@ export function useToken() {
 
   useEffect(() => {
     const parsedHash = queryString.parse(location.hash);
-    //console.log(parsedHash);
 
-    setToken(parsedHash.access_token);
+    setToken(String(parsedHash.access_token));
   }, [token]);
 
   return [token];
