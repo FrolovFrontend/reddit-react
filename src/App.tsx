@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './main.global.css';
 import { Layout } from './Layout';
 import { Header } from './Header/';
@@ -7,38 +7,36 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { tokenContext } from './context/tokenContext';
 import { UserContextProvider } from './context/userContext';
-import { commentContext } from './context/commentContext';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { rootReducer } from './store';
+
+const store = createStore(rootReducer, composeWithDevTools());
 
 export function App() {
-  const [commentValue, setCommentValue] = useState('');
   const [token] = useToken();
-
-  const CommentProvider = commentContext.Provider;
+  const TokenProvider = tokenContext.Provider;
 
   return (
     <Router>
-      <tokenContext.Provider value={token}>
-        <CommentProvider
-          value={{
-            value: commentValue,
-            onChange: setCommentValue,
-          }}
-        >
-          <UserContextProvider>
-            <Layout>
-              <Header />
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route path="/auth">
-                  <Home />
-                </Route>
-              </Switch>
-            </Layout>
-          </UserContextProvider>
-        </CommentProvider>
-      </tokenContext.Provider>
+      <Provider store={store}>
+        <TokenProvider value={token}>
+            <UserContextProvider>
+              <Layout>
+                <Header />
+                <Switch>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route path="/auth">
+                    <Home />
+                  </Route>
+                </Switch>
+              </Layout>
+            </UserContextProvider>
+        </TokenProvider>
+      </Provider>
     </Router>
   );
 }
