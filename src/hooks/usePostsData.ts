@@ -1,0 +1,40 @@
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import { tokenContext } from '../context/tokenContext';
+import { API_BASE_URL } from '../helpers/constants';
+
+export interface IPostsData {
+  title: string;
+  id: string;
+  author: string;
+  url: string;
+  num_comments: number;
+  score: number;
+  created: number;
+  is_video: boolean;
+}
+
+interface IPostData {
+  data: IPostsData;
+}
+
+export type TPostsData = Array<IPostData>;
+
+export function usePostsData() {
+  const [data, setData] = useState<TPostsData>([]);
+  const token = useContext(tokenContext);
+
+  useEffect(() => {
+    axios
+      .get(`${API_BASE_URL}/best`, {
+        headers: { Authorization: `bearer ${token}` },
+      })
+      .then((response) => {
+        const postsData = response.data.data;
+        setData(postsData.children);
+      })
+      .catch(console.log);
+  }, [token]);
+
+  return [data];
+}
