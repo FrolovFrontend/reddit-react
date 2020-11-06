@@ -1,8 +1,8 @@
-import React from "react";
-import { Break } from "../../../Break";
-import { EIcons, Icon } from "../../../Icon";
-import { EColor, Text } from "../../../Text";
-import styles from "./userblock.css";
+import React from 'react';
+import { Break } from '../../../Break';
+import { EIcons, Icon } from '../../../Icon';
+import { EColor, Text } from '../../../Text';
+import styles from './userblock.css';
 
 interface IUserBlockProps {
   avatarSrc?: string;
@@ -30,7 +30,7 @@ export function UserBlock({ avatarSrc, username }: IUserBlockProps) {
       <div className={styles.username}>
         <Break size={12} />
         <Text size={20} color={username ? EColor.black : EColor.gray99}>
-          {username || "Аноним"}
+          {username || 'Аноним'}
         </Text>
       </div>
     </a>

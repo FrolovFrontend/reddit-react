@@ -1,7 +1,7 @@
 import React from 'react';
 import './main.global.css';
-import { Layout } from './Layout';
-import { Header } from './Header/';
+import { Layout } from './components/Layout';
+import { Header } from './components/Header';
 import { useToken } from './hooks/useToken';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
@@ -22,19 +22,19 @@ export function App() {
     <Router>
       <Provider store={store}>
         <TokenProvider value={token}>
-            <UserContextProvider>
-              <Layout>
-                <Header />
-                <Switch>
-                  <Route exact path="/">
-                    <Home />
-                  </Route>
-                  <Route path="/auth">
-                    <Home />
-                  </Route>
-                </Switch>
-              </Layout>
-            </UserContextProvider>
+          <UserContextProvider>
+            <Layout>
+              <Header />
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route path="/auth">
+                  <Home />
+                </Route>
+              </Switch>
+            </Layout>
+          </UserContextProvider>
         </TokenProvider>
       </Provider>
     </Router>

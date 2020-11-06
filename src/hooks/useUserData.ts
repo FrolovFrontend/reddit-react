@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { tokenContext } from '../context/tokenContext';
 
@@ -12,9 +12,10 @@ export function useUserData() {
   const token = useContext(tokenContext);
 
   useEffect(() => {
-    Axios.get('https://oauth.reddit.com/api/v1/me', {
-      headers: { Authorization: `bearer ${token}` },
-    })
+    axios
+      .get('https://oauth.reddit.com/api/v1/me', {
+        headers: { Authorization: `bearer ${token}` },
+      })
       .then((resp) => {
         const userData = resp.data;
 

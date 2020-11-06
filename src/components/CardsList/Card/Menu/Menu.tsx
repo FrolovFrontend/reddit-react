@@ -1,9 +1,9 @@
-import React from "react";
-import { MenuIcon } from "../../../Icons";
-import { Dropdown } from "../../../Dropdown";
-import styles from "./menu.css";
-import { MenuItemsList } from "./MenuItemsList";
-import { EColor, Text } from "../../../Text";
+import React from 'react';
+import { Dropdown } from '../../../Dropdown';
+import { MenuIcon } from '../../../Icons';
+import { EColor, Text } from '../../../Text';
+import styles from './menu.css';
+import { MenuItemsList } from './MenuItemsList';
 
 export function Menu() {
   return (
