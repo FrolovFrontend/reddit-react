@@ -7,7 +7,16 @@ import { Preview } from './Preview';
 import { TextContent } from './TextContent';
 
 export function Card(props: IPostsData) {
-  const { title, author, url, num_comments, score, created, is_video } = props;
+  const {
+    title,
+    author,
+    thumbnail,
+    num_comments,
+    score,
+    created,
+    is_video,
+    is_self,
+  } = props;
 
   return (
     <li className={styles.card}>
@@ -17,7 +26,7 @@ export function Card(props: IPostsData) {
         userName={author}
         created={created}
       />
-      <Preview previewImage={url} isVideo={is_video} />
+      <Preview previewImage={thumbnail} isVideo={is_video} isSelf={is_self} />
       <Menu />
       <Controls numComments={num_comments} score={score} />
     </li>

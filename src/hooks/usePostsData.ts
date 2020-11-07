@@ -7,11 +7,12 @@ export interface IPostsData {
   title: string;
   id: string;
   author: string;
-  url: string;
+  thumbnail: string;
   num_comments: number;
   score: number;
   created: number;
   is_video: boolean;
+  is_self: boolean;
 }
 
 interface IPostData {

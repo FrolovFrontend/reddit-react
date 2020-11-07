@@ -17,7 +17,7 @@ export function CardsList() {
         return (
           <Card
             id={item.data.id}
-            url={item.data.url}
+            thumbnail={item.data.thumbnail}
             title={item.data.title}
             author={item.data.author}
             key={item.data.id}
@@ -25,6 +25,7 @@ export function CardsList() {
             score={item.data.score}
             created={item.data.created}
             is_video={item.data.is_video}
+            is_self={item.data.is_self}
           />
         );
       })}
