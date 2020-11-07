@@ -13,6 +13,11 @@ export interface IPostsData {
   created: number;
   is_video: boolean;
   is_self: boolean;
+  media: {
+    reddit_video: {
+      fallback_url: string;
+    };
+  };
 }
 
 interface IPostData {

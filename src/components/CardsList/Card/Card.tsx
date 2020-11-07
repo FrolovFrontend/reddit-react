@@ -1,32 +1,52 @@
 import React from 'react';
-import { IPostsData } from '../../../hooks/usePostsData';
 import styles from './card.css';
 import { Controls } from './Controls';
 import { Menu } from './Menu';
 import { Preview } from './Preview';
 import { TextContent } from './TextContent';
 
-export function Card(props: IPostsData) {
+export interface ICardProps {
+  title: string;
+  id: string;
+  author: string;
+  authorAvatar: string;
+  thumbnail: string;
+  num_comments: number;
+  score: number;
+  created: string;
+  isVideo: boolean;
+  isSelf: boolean;
+  video: string;
+}
+
+export function Card(props: ICardProps) {
   const {
     title,
     author,
+    authorAvatar,
     thumbnail,
     num_comments,
     score,
     created,
-    is_video,
-    is_self,
+    isVideo,
+    isSelf,
+    video,
   } = props;
 
   return (
     <li className={styles.card}>
       <TextContent
         title={title}
-        userAvatar="https://source.unsplash.com/random"
+        userAvatar={authorAvatar}
         userName={author}
         created={created}
       />
-      <Preview previewImage={thumbnail} isVideo={is_video} isSelf={is_self} />
+      <Preview
+        previewImage={thumbnail}
+        previewVideo={video}
+        isVideo={isVideo}
+        isSelf={isSelf}
+      />
       <Menu />
       <Controls numComments={num_comments} score={score} />
     </li>

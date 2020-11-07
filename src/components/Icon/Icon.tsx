@@ -1,5 +1,5 @@
-import React from "react";
-import classNames from "classnames";
+import React from 'react';
+import classNames from 'classnames';
 import {
   AnonIcon,
   BlockIcon,
@@ -8,8 +8,9 @@ import {
   SavingIcon,
   SharedIcon,
   WarningIcon,
-} from "../Icons";
-import styles from "./icon.css";
+  RedditSelfIcon,
+} from '../Icons';
+import styles from './icon.css';
 
 export enum EIcons {
   block,
@@ -19,6 +20,7 @@ export enum EIcons {
   shared,
   warning,
   anon,
+  redditSelf,
 }
 
 type TSizes = 12 | 14 | 16 | 20 | 24 | 32 | 40 | 50;
@@ -47,6 +49,8 @@ const getIcon = (name: EIcons) => {
       return <WarningIcon />;
     case EIcons.anon:
       return <AnonIcon />;
+    case EIcons.redditSelf:
+      return <RedditSelfIcon />;
   }
 };
 

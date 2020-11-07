@@ -7,7 +7,7 @@ interface ITextContentProps {
   userAvatar: string;
   userName: string;
   title: string;
-  created: number;
+  created: string;
 }
 
 export function TextContent(props: ITextContentProps) {

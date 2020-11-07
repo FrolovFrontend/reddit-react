@@ -1,0 +1,16 @@
+.self {
+  display: none;
+}
+
+@media all and (min-width: 1024px) {
+  .self {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 190px;
+    height: 96px;
+    background-color: var(--grayF4);
+    border-radius: 3px;
+    order: 1;
+  }
+}

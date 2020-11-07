@@ -11,6 +11,12 @@ export function CardsList() {
   //  return date.toLocaleString();
   //}
 
+  function convertDate(epochDate: number): string {
+    const myDate = new Date(epochDate * 1000);
+
+    return myDate.toLocaleString();
+  }
+
   return (
     <ul className={styles.cardsList}>
       {postsData.map((item) => {
@@ -20,12 +26,15 @@ export function CardsList() {
             thumbnail={item.data.thumbnail}
             title={item.data.title}
             author={item.data.author}
+            authorAvatar="https://source.unsplash.com/random"
             key={item.data.id}
             num_comments={item.data.num_comments}
             score={item.data.score}
-            created={item.data.created}
-            is_video={item.data.is_video}
-            is_self={item.data.is_self}
+            created={convertDate(item.data.created)}
+            isVideo={item.data.is_video}
+            isSelf={item.data.is_self}
+            video=""
+            //video={item.data.media.reddit_video.fallback_url}
           />
         );
       })}

@@ -4,7 +4,7 @@ import styles from './metadata.css';
 interface IMetaDataProps {
   imgPath: string;
   userName: string;
-  created: number;
+  created: string;
 }
 
 export function MetaData({ imgPath, userName, created }: IMetaDataProps) {
