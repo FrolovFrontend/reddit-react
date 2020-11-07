@@ -6,11 +6,6 @@ import styles from './cardslist.css';
 export function CardsList() {
   const [postsData] = usePostsData();
 
-  //function getCreatedDate(created: number) {
-  //  const date = new Date(created * 1000);
-  //  return date.toLocaleString();
-  //}
-
   function convertDate(epochDate: number): string {
     const myDate = new Date(epochDate * 1000);
 
