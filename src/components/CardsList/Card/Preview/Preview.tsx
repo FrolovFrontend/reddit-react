@@ -9,6 +9,7 @@ interface IPreviewProps {
   previewVideo: string;
   isVideo: boolean;
   isSelf: boolean;
+  thumbnail: string;
 }
 
 export function Preview({
@@ -16,6 +17,7 @@ export function Preview({
   previewVideo,
   isVideo,
   isSelf,
+  thumbnail,
 }: IPreviewProps) {
   if (isVideo) {
     return (
@@ -30,10 +32,18 @@ export function Preview({
       </div>
     );
   } else {
-    return (
-      <div className={styles.preview}>
-        <Image imagePath={previewImage} />
-      </div>
-    );
+    if (thumbnail === 'default') {
+      return (
+        <div className={styles.preview}>
+          <Self />
+        </div>
+      );
+    } else {
+      return (
+        <div className={styles.preview}>
+          <Image imagePath={previewImage} />
+        </div>
+      );
+    }
   }
 }

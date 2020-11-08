@@ -19,7 +19,6 @@ export function MetaData({ imgPath, userName, created }: IMetaDataProps) {
       <span className={styles.createdAt}>
         <span className={styles.publishedLabel}>опубликовано </span>
         {created}
-        {/*часа назад*/}
       </span>
     </div>
   );

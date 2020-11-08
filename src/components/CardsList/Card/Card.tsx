@@ -46,6 +46,7 @@ export function Card(props: ICardProps) {
         previewVideo={video}
         isVideo={isVideo}
         isSelf={isSelf}
+        thumbnail={thumbnail}
       />
       <Menu />
       <Controls numComments={num_comments} score={score} />

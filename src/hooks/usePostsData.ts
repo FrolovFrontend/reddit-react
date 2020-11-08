@@ -10,7 +10,7 @@ export interface IPostsData {
   thumbnail: string;
   num_comments: number;
   score: number;
-  created: number;
+  created_utc: number;
   is_video: boolean;
   is_self: boolean;
   media: {
@@ -32,7 +32,7 @@ export function usePostsData() {
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/best`, {
+      .get(`${API_BASE_URL}/hot`, {
         headers: { Authorization: `bearer ${token}` },
       })
       .then((response) => {

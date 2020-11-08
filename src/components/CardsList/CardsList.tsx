@@ -1,3 +1,4 @@
+import moment, { unix } from 'moment';
 import React from 'react';
 import { usePostsData } from '../../hooks/usePostsData';
 import { Card } from './Card/Card';
@@ -7,9 +8,10 @@ export function CardsList() {
   const [postsData] = usePostsData();
 
   function convertDate(epochDate: number): string {
-    const myDate = new Date(epochDate * 1000);
-
-    return myDate.toLocaleString();
+    moment.locale('ru');
+    const created = unix(epochDate);
+    console.log(created);
+    return created.utc().fromNow();
   }
 
   return (
@@ -25,7 +27,7 @@ export function CardsList() {
             key={item.data.id}
             num_comments={item.data.num_comments}
             score={item.data.score}
-            created={convertDate(item.data.created)}
+            created={convertDate(item.data.created_utc)}
             isVideo={item.data.is_video}
             isSelf={item.data.is_self}
             video=""

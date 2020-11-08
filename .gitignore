@@ -6,3 +6,4 @@ dist
 *.tgz
 package-lock.json
 examples
+debug.log
