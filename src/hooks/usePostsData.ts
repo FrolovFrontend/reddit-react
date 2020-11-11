@@ -32,14 +32,16 @@ export function usePostsData() {
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/hot`, {
+      .get(`${API_BASE_URL}/best`, {
         headers: { Authorization: `bearer ${token}` },
       })
       .then((response) => {
         const postsData = response.data.data;
         setData(postsData.children);
       })
-      .catch(console.log);
+      .catch((err) => {
+        console.log(err);
+      });
   }, [token]);
 
   return [data];

@@ -10,7 +10,6 @@ export function CardsList() {
   function convertDate(epochDate: number): string {
     moment.locale('ru');
     const created = unix(epochDate);
-    console.log(created);
     return created.utc().fromNow();
   }
 
@@ -30,8 +29,7 @@ export function CardsList() {
             created={convertDate(item.data.created_utc)}
             isVideo={item.data.is_video}
             isSelf={item.data.is_self}
-            video=""
-            //video={item.data.media.reddit_video.fallback_url}
+            video={item.data.media && item.data.media.reddit_video.fallback_url}
           />
         );
       })}
