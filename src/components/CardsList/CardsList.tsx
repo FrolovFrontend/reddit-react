@@ -22,14 +22,14 @@ export function CardsList() {
             thumbnail={item.data.thumbnail}
             title={item.data.title}
             author={item.data.author}
-            authorAvatar="https://source.unsplash.com/random"
+            authorAvatar="https://source.unsplash.com/random" // заглушка
             key={item.data.id}
             num_comments={item.data.num_comments}
             score={item.data.score}
             created={convertDate(item.data.created_utc)}
             isVideo={item.data.is_video}
             isSelf={item.data.is_self}
-            video={item.data.media && item.data.media.reddit_video.fallback_url}
+            video="https://v.redd.it/cfoxjuc1xzy51/DASH_1080.mp4?source=fallback" // заглушка
           />
         );
       })}

@@ -32,7 +32,7 @@ export function Preview({
       </div>
     );
   } else {
-    if (thumbnail === 'default') {
+    if (thumbnail === 'default' || thumbnail === 'image') {
       return (
         <div className={styles.preview}>
           <Self />
