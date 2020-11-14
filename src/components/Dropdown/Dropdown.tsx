@@ -1,5 +1,6 @@
-import React from "react";
-import styles from "./dropdown.css";
+import React from 'react';
+import styles from './dropdown.css';
+import { ListContainer } from './ListContainer';
 
 interface IDropDownProps {
   button: React.ReactNode;
@@ -41,11 +42,10 @@ export function Dropdown({
     <div className={styles.container}>
       <div onClick={handleOpen}>{button}</div>
       {isDropDownOpen && (
-        <div className={styles.listContainer}>
-          <div className={styles.list} onClick={() => setIsDropDownOpen(false)}>
-            {children}
-          </div>
-        </div>
+        <ListContainer
+          children={children}
+          onClose={() => setIsDropDownOpen(false)}
+        />
       )}
     </div>
   );
