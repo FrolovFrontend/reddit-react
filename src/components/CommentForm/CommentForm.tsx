@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent } from 'react';
 import styles from './commentform.css';
+import { CommentOptions } from './CommentOptions';
 
 interface ICommentFormProps {
   value: string;
@@ -10,10 +11,18 @@ interface ICommentFormProps {
 export function CommentForm({ value, onChange, onSubmit }: ICommentFormProps) {
   return (
     <form className={styles.form} onSubmit={onSubmit}>
-      <textarea className={styles.input} value={value} onChange={onChange} />
-      <button type="submit" className={styles.button}>
-        Комментировать
-      </button>
+      <textarea
+        className={styles.input}
+        value={value}
+        onChange={onChange}
+        placeholder="Оставьте ваш комментарий"
+      />
+      <div className={styles.controls}>
+        <CommentOptions />
+        <button type="submit" className={styles.button}>
+          Комментировать
+        </button>
+      </div>
     </form>
   );
 }
