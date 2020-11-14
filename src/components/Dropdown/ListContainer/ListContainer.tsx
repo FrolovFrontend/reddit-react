@@ -4,7 +4,7 @@ import styles from './listcontainer.css';
 
 interface IListContainerProps {
   children: React.ReactNode;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 export function ListContainer({ children, onClose }: IListContainerProps) {
