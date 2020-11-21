@@ -1,0 +1,18 @@
+.sortingbutton {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  outline: none;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: 4px;
+  transition: transform 0.15s;
+}
+
+.isActive .arrow {
+  transform: rotate(-180deg);
+}

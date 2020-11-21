@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styles from './dropdown.css';
-import { ListContainer } from './ListContainer';
 
 interface IDropDownProps {
   button: React.ReactNode;
@@ -27,8 +26,6 @@ export function Dropdown({
   onClose = NOOP,
 }: IDropDownProps) {
   const [isDropDownOpen, setIsDropDownOpen] = React.useState(isOpen);
-  const buttonRef = useRef<HTMLDivElement>(null);
-
   React.useEffect(() => setIsDropDownOpen(isOpen), [isOpen]);
   React.useEffect(() => (isDropDownOpen ? onOpen() : onClose()), [
     isDropDownOpen,
@@ -36,19 +33,19 @@ export function Dropdown({
 
   const handleOpen = () => {
     if (isOpen === undefined) {
-      console.log(buttonRef.current?.getBoundingClientRect());
       setIsDropDownOpen(!isDropDownOpen);
     }
   };
 
   return (
-    <div className={styles.container} ref={buttonRef}>
+    <div className={styles.container}>
       <div onClick={handleOpen}>{button}</div>
       {isDropDownOpen && (
-        <ListContainer
-          children={children}
-          onClose={() => setIsDropDownOpen(false)}
-        />
+        <div className={styles.listContainer}>
+          <div className={styles.list} onClick={() => setIsDropDownOpen(false)}>
+            {children}
+          </div>
+        </div>
       )}
     </div>
   );

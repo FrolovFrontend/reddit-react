@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import { Break } from '../Break';
 import { CommentFormContainer } from '../CommentFormContainer';
+import { CommentsContainer } from '../CommentsContainer';
 import styles from './post.css';
 import { PostContent } from './PostContent';
 import { PostHead } from './PostHead';
@@ -37,6 +39,8 @@ export function Post({ onClose }: IPostProps) {
         <PostHead />
         <PostContent />
         <CommentFormContainer />
+        <Break size={32} top />
+        <CommentsContainer />
       </div>
     </div>,
     node
