@@ -35,3 +35,9 @@
     left: 0;
   }
 }
+
+@media all and (min-width: 1540px) {
+  .title {
+    max-width: 720px;
+  }
+}

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
   --black: #333333;
@@ -21,7 +21,7 @@ body {
   background-color: var(--grayF4);
   font-style: 14px;
   line-height: 16px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 * {
@@ -47,4 +47,9 @@ button {
   background: transparent;
   cursor: pointer;
   font: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
 }

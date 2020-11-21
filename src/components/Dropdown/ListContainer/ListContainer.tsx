@@ -8,13 +8,13 @@ interface IListContainerProps {
 }
 
 export function ListContainer({ children, onClose }: IListContainerProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const list = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClick(event: MouseEvent) {
       if (
         event.target instanceof Node &&
-        !ref.current?.contains(event.target)
+        !list.current?.contains(event.target)
       ) {
         onClose?.();
       }
@@ -30,7 +30,7 @@ export function ListContainer({ children, onClose }: IListContainerProps) {
   if (!node) return null;
 
   return ReactDOM.createPortal(
-    <div className={styles.listContainer} ref={ref}>
+    <div className={styles.listContainer} ref={list}>
       <div className={styles.list} onClick={onClose}>
         {children}
       </div>
