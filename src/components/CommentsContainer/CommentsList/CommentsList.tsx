@@ -1,10 +1,16 @@
 import React from 'react';
 import styles from './commentslist.css';
 
-export function CommentsList() {
+interface ICommentsListProps {
+  comment: React.ReactNode;
+  commentsList?: React.ReactNode;
+}
+
+export function CommentsList({ comment, commentsList }: ICommentsListProps) {
   return (
-    <div>
-      CommentsList
-    </div>
+    <ul className={styles.commentslist}>
+      {comment}
+      {commentsList}
+    </ul>
   );
 }

@@ -1,25 +1,25 @@
-import React from "react";
-import styles from "./text.css";
-import classNames from "classnames";
+import React from 'react';
+import styles from './text.css';
+import classNames from 'classnames';
 
 export enum EColor {
-  black = "black",
-  orange = "orange",
-  green = "green",
-  white = "white",
-  grayF4 = "grayF4",
-  grayF3 = "grayF3",
-  grayEC = "grayEC",
-  grayD9 = "grayD9",
-  grayC4 = "grayC4",
-  gray99 = "gray99",
-  gray66 = "gray66",
+  black = 'black',
+  orange = 'orange',
+  green = 'green',
+  white = 'white',
+  grayF4 = 'grayF4',
+  grayF3 = 'grayF3',
+  grayEC = 'grayEC',
+  grayD9 = 'grayD9',
+  grayC4 = 'grayC4',
+  gray99 = 'gray99',
+  gray66 = 'gray66',
 }
 
 type TSizes = 28 | 20 | 16 | 14 | 12 | 10;
 
 interface ITextProps {
-  As?: "span" | "h1" | "h2" | "h3" | "h4" | "div";
+  As?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'div';
   children?: React.ReactNode;
   color?: EColor;
   bold?: boolean;
@@ -31,7 +31,7 @@ interface ITextProps {
 
 export function Text(props: ITextProps) {
   const {
-    As = "span",
+    As = 'span',
     color = EColor.black,
     bold = false,
     children,

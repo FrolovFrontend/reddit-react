@@ -14,6 +14,9 @@
 .item {
   margin-right: 24px;
 }
+.item:hover > button > svg > path {
+  fill: var(--orange);
+}
 .item:last-child {
   margin-right: 0;
 }

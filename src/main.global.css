@@ -16,8 +16,8 @@
 }
 
 body {
-  padding: 0;
-  margin: 0;
+  /*padding: 0;
+  margin: 0;*/
   background-color: var(--grayF4);
   font-style: 14px;
   line-height: 16px;
@@ -27,6 +27,8 @@ body {
 * {
   color: var(--black);
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-fonr-smoothing: grayscale;
 }

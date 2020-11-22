@@ -1,0 +1,11 @@
+.button {
+  display: flex;
+}
+
+.button:hover > span {
+  color: var(--orange);
+}
+
+.button:hover div > svg > path {
+  fill: var(--orange);
+}
