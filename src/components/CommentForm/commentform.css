@@ -1,0 +1,48 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.input {
+  width: 100%;
+  min-height: 88px;
+  padding: 12px 18px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  border: 1px solid var(--grayD9);
+  outline: none;
+  border-radius: 3px 3px 0px 0px;
+  resize: vertical;
+}
+.input:focus {
+  border: 1px solid var(--orange);
+}
+.input::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--gray99);
+}
+.controls {
+  display: flex;
+  width: 100%;
+}
+
+.cancel,
+.button {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+.cancel {
+  padding: 0 24px;
+  color: var(--gray99);
+  background-color: var(--grayEC);
+}
+.button {
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 0 40px;
+}

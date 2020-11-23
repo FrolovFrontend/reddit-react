@@ -2,12 +2,15 @@ import classNames from 'classnames';
 import React from 'react';
 import { merge } from '../../../../../utils/js/merge';
 import { generateId } from '../../../../../utils/react/generateRandomIndex';
-import { GenericList } from '../../../../GenericList/GenericList';
+import {
+  GenericList,
+  IGenericListItem,
+} from '../../../../GenericList/GenericList';
 import { EIcons, Icon } from '../../../../Icon';
 import { EColor, Text } from '../../../../Text';
 import styles from './menuitemslist.css';
 
-const ITEMS_LIST = [
+const ITEMS_LIST: IGenericListItem[] = [
   {
     As: 'li' as const,
     className: classNames(styles.menuItem, styles.menuItemComments),

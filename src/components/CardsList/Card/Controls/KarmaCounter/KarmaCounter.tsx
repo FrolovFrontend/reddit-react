@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './karmacounter.css';
 
 interface IKarmaCounterProps {
-  score: number;
+  score: number | null;
 }
 
 export function KarmaCounter({ score }: IKarmaCounterProps) {
@@ -19,7 +19,7 @@ export function KarmaCounter({ score }: IKarmaCounterProps) {
           <path d="M9.5 0L0 10H19L9.5 0Z" fill="#C4C4C4" />
         </svg>
       </button>
-      <span className={styles.karmaValue}>{score}</span>
+      {score && <span className={styles.karmaValue}>{score}</span>}
       <button className={styles.down}>
         <svg
           className={styles.down}

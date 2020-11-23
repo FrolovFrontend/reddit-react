@@ -1,0 +1,18 @@
+.createdAt {
+  padding: 0 6px 0 0;
+}
+
+.createdAt,
+.createdAt * {
+  color: var(--gray99);
+}
+
+.publishedLabel {
+  display: none;
+}
+
+@media all and (min-width: 1024px) {
+  .publishedLabel {
+    display: inline;
+  }
+}

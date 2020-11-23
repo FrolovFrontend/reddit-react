@@ -1,0 +1,29 @@
+.metaData {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.createdAt {
+  padding: 0 8px 0 0;
+}
+
+.createdAt,
+.createdAt * {
+  color: var(--gray99);
+}
+
+.league {
+  background-color: var(--grayD9);
+  padding: 2px 8px;
+}
+
+@media all and (min-width: 1024px) {
+  .metaData {
+    font-size: 14px;
+    line-height: 16px;
+    margin: 8px 0 0 0;
+  }
+}

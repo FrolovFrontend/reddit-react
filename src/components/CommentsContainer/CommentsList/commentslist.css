@@ -1,0 +1,19 @@
+.commentslist {
+  position: relative;
+  padding-left: 40px;
+  margin: 0 0 40px;
+}
+
+.commentslist:last-child {
+  margin: 0;
+}
+
+.commentslist::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: calc(100% - 50px);
+  background-color: var(--grayD9);
+  left: 8px;
+  top: 50px;
+}

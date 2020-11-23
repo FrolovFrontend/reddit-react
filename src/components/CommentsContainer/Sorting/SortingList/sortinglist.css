@@ -1,0 +1,28 @@
+.sortinglist {
+  display: flex;
+  flex-direction: column;
+}
+
+.sortingitem {
+  position: relative;
+  cursor: pointer;
+  margin: 0 0 12px;
+}
+
+.sortingitem:last-child {
+  margin: 0;
+}
+
+.sortingitem:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -8px;
+  left: 0;
+  background-color: var(--grayEC);
+}
+
+.sortingitem:hover span {
+  color: var(--orange);
+}

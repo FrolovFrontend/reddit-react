@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
   --black: #333333;
@@ -16,17 +16,19 @@
 }
 
 body {
-  padding: 0;
-  margin: 0;
+  /*padding: 0;
+  margin: 0;*/
   background-color: var(--grayF4);
   font-style: 14px;
   line-height: 16px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 * {
   color: var(--black);
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-fonr-smoothing: grayscale;
 }
@@ -47,4 +49,9 @@ button {
   background: transparent;
   cursor: pointer;
   font: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
 }

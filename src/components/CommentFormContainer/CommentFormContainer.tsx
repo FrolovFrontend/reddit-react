@@ -25,6 +25,7 @@ export function CommentFormContainer() {
 
   return (
     <CommentForm
+      submitText="Комментировать"
       value={value}
       onChange={handleChange}
       onSubmit={handleSubmit}
