@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
-import { tokenContext } from '../context/tokenContext';
+import { useEffect, useState } from 'react';
 import { API_BASE_URL } from '../helpers/constants';
+import { useToken } from './useToken';
 
 export interface IPostsData {
   title: string;
@@ -28,7 +28,7 @@ export type TPostsData = Array<IPostData>;
 
 export function usePostsData() {
   const [data, setData] = useState<TPostsData>([]);
-  const token = useContext(tokenContext);
+  const token = useToken();
 
   useEffect(() => {
     axios
@@ -42,7 +42,7 @@ export function usePostsData() {
       .catch((err) => {
         console.log(err);
       });
-  }, [token]);
+  }, [data]);
 
   return [data];
 }

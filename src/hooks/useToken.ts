@@ -1,14 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import queryString from 'query-string';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, setToken } from '../store';
 
 export function useToken() {
-  const [token, setToken] = useState('');
+  const token = useSelector<RootState, string | null>((state) => state.token);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const parsedHash = queryString.parse(location.hash);
+    if (!token) {
+      const parsedHash = queryString.parse(location.hash);
+      const userToken = String(parsedHash.access_token);
+      dispatch(setToken(userToken));
+    }
+  }, []);
 
-    setToken(String(parsedHash.access_token));
-  }, [token]);
-
-  return [token];
+  return token;
 }
