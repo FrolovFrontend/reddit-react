@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { EIcons, Icon } from '../../../../Icon';
 import { ActionButton } from './ActionButton';
 import styles from './commentsactions.css';
 
 interface ICommentsAction {
-  onCLickReplay: () => void;
+  onCLickReplay: (event: FormEvent<HTMLButtonElement>) => void;
   onCLickShared: () => void;
   onCLickReport: () => void;
 }

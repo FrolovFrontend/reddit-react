@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { Break } from '../../../../../Break';
 import { EColor, Text } from '../../../../../Text';
 import styles from './actionbutton.css';
@@ -6,7 +6,7 @@ import styles from './actionbutton.css';
 interface IActionButtonProps {
   icon: React.ReactNode;
   text: string;
-  onClick: () => void;
+  onClick: (event: FormEvent<HTMLButtonElement>) => void;
 }
 
 export function ActionButton({ icon, text, onClick }: IActionButtonProps) {

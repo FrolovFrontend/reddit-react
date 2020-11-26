@@ -12,14 +12,15 @@ interface IPostProps {
 }
 
 export function Post({ onClose }: IPostProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const postRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClick(event: MouseEvent) {
       if (
         event.target instanceof Node &&
-        !ref.current?.contains(event.target)
+        !postRef.current?.contains(event.target)
       ) {
+        console.log(event.target);
         onClose?.();
       }
     }
@@ -35,7 +36,7 @@ export function Post({ onClose }: IPostProps) {
 
   return ReactDOM.createPortal(
     <div className={styles.modal}>
-      <div className={styles.container} ref={ref}>
+      <div className={styles.container} ref={postRef}>
         <PostHead />
         <PostContent />
         <CommentFormContainer />

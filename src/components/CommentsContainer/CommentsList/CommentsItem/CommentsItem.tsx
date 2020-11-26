@@ -37,12 +37,9 @@ export function CommentsItem({ userName }: ICommentItemProps) {
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleReplay = () => {
-    setState((state) => ({ ...state, isReplay: true }));
-  };
-
-  const handleCancel = () => {
-    setState((state) => ({ ...state, isReplay: false }));
+  const handleReplay = (event: FormEvent<HTMLButtonElement>) => {
+    setState((state) => ({ ...state, isReplay: !state.isReplay }));
+    event.stopPropagation();
   };
 
   const handleShared = () => {
@@ -94,8 +91,8 @@ export function CommentsItem({ userName }: ICommentItemProps) {
             onSubmit={handleSubmit}
             submitText="Ответить"
             value={state.value}
-            isReplay
-            onCancel={handleCancel}
+            hasCancel
+            onCancel={handleReplay}
             ref={textareaRef}
           />
         </div>
