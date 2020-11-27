@@ -25,7 +25,7 @@ export function useUserData() {
         });
       })
       .catch(console.log);
-  }, [data]);
+  }, [token]);
 
   return [data];
 }

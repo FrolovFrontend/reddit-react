@@ -42,7 +42,7 @@ export function usePostsData() {
       .catch((err) => {
         console.log(err);
       });
-  }, [data]);
+  }, [token]);
 
   return [data];
 }

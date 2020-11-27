@@ -9,8 +9,17 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer } from './store';
+import { loadState, saveState } from './utils/js/localStorage';
 
-const store = createStore(rootReducer, composeWithDevTools());
+const persistedState = loadState();
+
+const store = createStore(rootReducer, persistedState, composeWithDevTools());
+
+store.subscribe(() => {
+  return saveState({
+    token: store.getState().token,
+  });
+});
 
 export function App() {
   return (

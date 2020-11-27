@@ -3,12 +3,12 @@ import { ActionCreator, AnyAction, Reducer } from 'redux';
 export interface RootState {
   commentText: string;
   replayText: string;
-  token: string | null;
+  token: string;
 }
 const initialState: RootState = {
   commentText: '',
   replayText: '',
-  token: null,
+  token: '',
 };
 
 const UPDATE_COMMENT = 'UPDATE_COMMENT';
