@@ -1,25 +1,26 @@
 import React, { ChangeEvent, FormEvent } from 'react';
+import { NOOP } from '../../utils/js/NOOP';
 import styles from './commentform.css';
 import { CommentOptions } from './CommentOptions';
 
 interface ICommentFormProps {
-  isReplay?: boolean;
+  hasCancel?: boolean;
   submitText: string;
   value: string;
   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onSubmit: (event: FormEvent) => void;
-  onCancel?: () => void;
+  onCancel?: (event: FormEvent<HTMLButtonElement>) => void;
 }
 
 export const CommentForm = React.forwardRef(
   (props: ICommentFormProps, ref: any) => {
     const {
-      isReplay = false,
+      hasCancel = false,
       submitText,
       value,
       onChange,
       onSubmit,
-      onCancel,
+      onCancel = NOOP,
     } = props;
     return (
       <form className={styles.form} onSubmit={onSubmit}>
@@ -32,8 +33,8 @@ export const CommentForm = React.forwardRef(
         />
         <div className={styles.controls}>
           <CommentOptions />
-          {isReplay && (
-            <button type="button" onClick={onCancel} className={styles.cancel}>
+          {hasCancel && (
+            <button type="reset" onClick={onCancel} className={styles.cancel}>
               Отменить
             </button>
           )}

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
-import { tokenContext } from '../context/tokenContext';
+import { useEffect, useState } from 'react';
+import { useToken } from './useToken';
 
 interface IUserData {
   name?: string;
@@ -9,7 +9,7 @@ interface IUserData {
 
 export function useUserData() {
   const [data, setData] = useState<IUserData>({});
-  const token = useContext(tokenContext);
+  const token = useToken();
 
   useEffect(() => {
     axios

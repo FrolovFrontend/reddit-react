@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { MouseEvent, useState } from 'react';
+import { merge } from '../../../../utils/js/merge';
 import { generateId } from '../../../../utils/react/generateRandomIndex';
 import {
   GenericList,
@@ -47,9 +48,15 @@ const SORTING_ITEMS: IGenericListItem[] = [
 ].map(generateId);
 
 export function SortingList() {
+  const [list] = useState(SORTING_ITEMS);
+
+  const handleItemClick = (id: string) => {
+    console.log(id);
+  };
+
   return (
     <ul className={styles.sortinglist}>
-      <GenericList list={SORTING_ITEMS} />
+      <GenericList list={list.map(merge({ onClick: handleItemClick }))} />
     </ul>
   );
 }

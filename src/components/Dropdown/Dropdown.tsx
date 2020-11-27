@@ -1,4 +1,5 @@
 import React from 'react';
+import { NOOP } from '../../utils/js/NOOP';
 import styles from './dropdown.css';
 
 interface IDropDownProps {
@@ -13,7 +14,6 @@ interface IDropDownProps {
  * Функция ничего не делает
  * (служит значением по умолчанию для не обязательных методов)
  */
-const NOOP = () => {};
 
 /**
  * Компонент реализует логику выпадения чего угодно из чего угодно

@@ -2,40 +2,42 @@ import React from 'react';
 import './main.global.css';
 import { Layout } from './components/Layout';
 import { Header } from './components/Header';
-import { useToken } from './hooks/useToken';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
-import { tokenContext } from './context/tokenContext';
 import { UserContextProvider } from './context/userContext';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer } from './store';
+import { loadState, saveState } from './utils/js/localStorage';
 
-const store = createStore(rootReducer, composeWithDevTools());
+const persistedState = loadState();
+
+const store = createStore(rootReducer, persistedState, composeWithDevTools());
+
+store.subscribe(() => {
+  return saveState({
+    token: store.getState().token,
+  });
+});
 
 export function App() {
-  const [token] = useToken();
-  const TokenProvider = tokenContext.Provider;
-
   return (
     <Router>
       <Provider store={store}>
-        <TokenProvider value={token}>
-          <UserContextProvider>
-            <Layout>
-              <Header />
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route path="/auth">
-                  <Home />
-                </Route>
-              </Switch>
-            </Layout>
-          </UserContextProvider>
-        </TokenProvider>
+        <UserContextProvider>
+          <Layout>
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/auth">
+                <Home />
+              </Route>
+            </Switch>
+          </Layout>
+        </UserContextProvider>
       </Provider>
     </Router>
   );

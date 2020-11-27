@@ -1,15 +1,16 @@
 import { ActionCreator, AnyAction, Reducer } from 'redux';
 
-export type RootState = {
+export interface RootState {
   commentText: string;
   replayText: string;
-};
+  token: string;
+}
 const initialState: RootState = {
   commentText: '',
   replayText: '',
+  token: '',
 };
 
-// Генерируем action для типа UPDATE_COMMENT
 const UPDATE_COMMENT = 'UPDATE_COMMENT';
 export const updateComment: ActionCreator<AnyAction> = (text: string) => {
   return {
@@ -18,11 +19,11 @@ export const updateComment: ActionCreator<AnyAction> = (text: string) => {
   };
 };
 
-const UPDATE_REPLAY = 'UPDATE_REPLAY';
-export const updateReplay: ActionCreator<AnyAction> = (text: string) => {
+const SET_TOKEN = 'SET_TOKEN';
+export const setToken: ActionCreator<AnyAction> = (token: string) => {
   return {
-    type: UPDATE_REPLAY,
-    text,
+    type: SET_TOKEN,
+    token,
   };
 };
 
@@ -36,10 +37,10 @@ export const rootReducer: Reducer<RootState> = (
         ...state,
         commentText: action.text,
       };
-    case UPDATE_REPLAY:
+    case SET_TOKEN:
       return {
         ...state,
-        replayText: action.text,
+        token: action.token,
       };
     default:
       return state;
