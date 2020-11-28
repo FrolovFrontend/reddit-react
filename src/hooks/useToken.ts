@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import queryString from 'query-string';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, setToken } from '../store';
+import { RootState, setToken } from '../store/reducer';
 
 export function useToken() {
   console.log('useToken');
