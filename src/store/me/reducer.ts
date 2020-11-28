@@ -1,4 +1,4 @@
-import { Reducer } from 'react';
+import {Reducer} from 'react';
 import {
   IMeRequestAction,
   IMeRequestErrorAction,
@@ -15,12 +15,12 @@ export interface IMeState {
   data: IUserData;
 }
 
-type TMeActins =
+type TMeActions =
   | IMeRequestAction
   | IMeRequestSuccessAction
   | IMeRequestErrorAction;
 
-export const meReducer: Reducer<IMeState, TMeActins> = (state, action) => {
+export const meReducer: Reducer<IMeState, TMeActions> = (state, action) => {
   switch (action.type) {
     case ME_REQUEST:
       return {
@@ -30,14 +30,14 @@ export const meReducer: Reducer<IMeState, TMeActins> = (state, action) => {
     case ME_REQUEST_SUCCESS:
       return {
         ...state,
-        loading: false,
         data: action.data,
+        loading: false,
       };
     case ME_REQUEST_ERROR:
       return {
         ...state,
-        loading: false,
         error: action.error,
+        loading: false,
       };
     default:
       return state;

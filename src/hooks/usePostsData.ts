@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { API_BASE_URL } from '../helpers/constants';
-import { useToken } from './useToken';
+import {useEffect, useState} from 'react';
+import {API_BASE_URL} from '../helpers/constants';
+import {useSelector} from "react-redux";
+import {RootState} from "../store/reducer";
 
 export interface IPostsData {
   title: string;
@@ -28,12 +29,14 @@ export type TPostsData = Array<IPostData>;
 
 export function usePostsData() {
   const [data, setData] = useState<TPostsData>([]);
-  const token = useToken();
+  const token = useSelector<RootState, string>(state => state.token);
 
   useEffect(() => {
+    if (!token) return;
+
     axios
       .get(`${API_BASE_URL}/best`, {
-        headers: { Authorization: `bearer ${token}` },
+        headers: {Authorization: `bearer ${token}`},
       })
       .then((response) => {
         const postsData = response.data.data;

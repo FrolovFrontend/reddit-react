@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './main.global.css';
 import { Layout } from './components/Layout';
 import { Header } from './components/Header';
@@ -7,25 +7,24 @@ import { Home } from './pages/Home';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { loadState, saveState } from './utils/js/localStorage';
 import thunk from 'redux-thunk';
-import { rootReducer } from './store/reducer';
-
-const persistedState = loadState();
+import {rootReducer} from './store/reducer';
+import {useToken} from "./hooks/useToken";
+import {setToken} from "./store/actions";
 
 const store = createStore(
   rootReducer,
-  persistedState,
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-store.subscribe(() => {
-  return saveState({
-    token: store.getState().token,
-  });
-});
-
 export function App() {
+  const token = useToken();
+
+  useEffect(() => {
+    if (token) {
+      store.dispatch(setToken(token));
+    }
+  }, [token])
   return (
     <Router>
       <Provider store={store}>

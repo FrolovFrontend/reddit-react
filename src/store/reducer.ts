@@ -1,4 +1,4 @@
-import { ActionCreator, Reducer } from 'redux';
+import {Reducer} from 'redux';
 import {
   IMeRequestAction,
   IMeRequestErrorAction,
@@ -7,13 +7,20 @@ import {
   ME_REQUEST_ERROR,
   ME_REQUEST_SUCCESS,
 } from './me/actions';
-import { IMeState, meReducer } from './me/reducer';
+import {IMeState, meReducer} from './me/reducer';
+import {
+  ISetTokenAction,
+  IUpdateCommentAction,
+  SET_TOKEN,
+  UPDATE_COMMENT
+} from "./actions";
 
 export interface RootState {
   commentText: string;
   token: string;
   me: IMeState;
 }
+
 const initialState: RootState = {
   commentText: '',
   token: '',
@@ -22,32 +29,6 @@ const initialState: RootState = {
     error: '',
     data: {},
   },
-};
-
-const UPDATE_COMMENT = 'UPDATE_COMMENT';
-interface IUpdateCommentAction {
-  type: typeof UPDATE_COMMENT;
-  text: string;
-}
-export const updateComment: ActionCreator<IUpdateCommentAction> = (
-  text: string
-) => {
-  return {
-    type: UPDATE_COMMENT,
-    text,
-  };
-};
-
-const SET_TOKEN = 'SET_TOKEN';
-interface ISetTokenAction {
-  type: typeof SET_TOKEN;
-  token: string;
-}
-export const setToken: ActionCreator<ISetTokenAction> = (token: string) => {
-  return {
-    type: SET_TOKEN,
-    token,
-  };
 };
 
 type TMyAction =
