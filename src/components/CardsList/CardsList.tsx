@@ -1,18 +1,91 @@
 import moment, {unix} from 'moment';
-import React from 'react';
-import {usePostsData} from '../../hooks/usePostsData';
+import React, {useEffect, useRef, useState} from 'react';
 import {Card} from "./Card";
 import styles from './cardslist.css';
 import {EColor, Text} from "../Text";
+import {useSelector} from "react-redux";
+import {RootState} from "../../store/reducer";
+import axios from "axios";
+import {API_BASE_URL} from "../../helpers/constants";
+
+export interface IPostsData {
+  title: string;
+  id: string;
+  author: string;
+  thumbnail: string;
+  num_comments: number;
+  score: number;
+  created_utc: number;
+  is_video: boolean;
+  is_self: boolean;
+  media: {
+    reddit_video: {
+      fallback_url: string;
+    };
+  };
+}
+
+interface IPostData {
+  data: IPostsData;
+}
+
+export type TPostsData = Array<IPostData>;
 
 export function CardsList() {
-  const {posts, isLoading, errorLoading} = usePostsData();
+  const [posts, setPosts] = useState<TPostsData>([]);
+  const [nextAfter, setNextAfter] = useState('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorLoading, serErrorLoading] = useState<string>('');
+  const token = useSelector<RootState, string>(state => state.token);
+  const bottomOfList = useRef<HTMLDivElement>(null)
 
   function convertDate(epochDate: number): string {
     moment.locale('ru');
     const created = unix(epochDate);
     return created.utc().fromNow();
   }
+
+  useEffect(() => {
+    if (!token) return;
+
+    async function load() {
+      setIsLoading(true);
+      serErrorLoading('');
+      try {
+        const {data: {data: {children, after}}} = await axios.get(`${API_BASE_URL}/best`, {
+          headers: {Authorization: `bearer ${token}`},
+          params: {
+            limit: 10,
+            after: nextAfter,
+          }
+        })
+        setNextAfter(after);
+        setPosts(prevChildren => prevChildren.concat(...children));
+      } catch (error) {
+        serErrorLoading(String(error));
+      }
+      setIsLoading(false);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        load();
+      }
+    }, {
+      rootMargin: '50px',
+    })
+    if (bottomOfList.current) {
+      observer.observe(bottomOfList.current)
+    }
+    return () => {
+      if (bottomOfList.current) {
+        observer.unobserve(bottomOfList.current)
+      }
+    }
+
+    load();
+
+  }, [bottomOfList.current, token, nextAfter])
 
   return (
     <ul className={styles.cardsList}>
@@ -39,6 +112,8 @@ export function CardsList() {
           />
         );
       })}
+
+      <div ref={bottomOfList}></div>
 
       {isLoading && (
         <div style={{textAlign: 'center'}}>
