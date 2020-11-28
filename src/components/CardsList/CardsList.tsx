@@ -1,11 +1,12 @@
-import moment, { unix } from 'moment';
+import moment, {unix} from 'moment';
 import React from 'react';
-import { usePostsData } from '../../hooks/usePostsData';
-import { Card } from './Card/Card';
+import {usePostsData} from '../../hooks/usePostsData';
+import {Card} from "./Card";
 import styles from './cardslist.css';
+import {EColor, Text} from "../Text";
 
 export function CardsList() {
-  const [postsData] = usePostsData();
+  const {posts, isLoading, errorLoading} = usePostsData();
 
   function convertDate(epochDate: number): string {
     moment.locale('ru');
@@ -15,24 +16,41 @@ export function CardsList() {
 
   return (
     <ul className={styles.cardsList}>
-      {postsData.map((item) => {
+      {posts.length === 0 && !isLoading && !errorLoading && (
+        <div style={{textAlign: 'center'}}>
+          <Text size={16} color={EColor.gray99}>Нет постов</Text>
+        </div>
+      )}
+      {posts.map((post) => {
         return (
           <Card
-            id={item.data.id}
-            thumbnail={item.data.thumbnail}
-            title={item.data.title}
-            author={item.data.author}
+            id={post.data.id}
+            thumbnail={post.data.thumbnail}
+            title={post.data.title}
+            author={post.data.author}
             authorAvatar="https://source.unsplash.com/random" // заглушка
-            key={item.data.id}
-            num_comments={item.data.num_comments}
-            score={item.data.score}
-            created={convertDate(item.data.created_utc)}
-            isVideo={item.data.is_video}
-            isSelf={item.data.is_self}
+            key={post.data.id}
+            num_comments={post.data.num_comments}
+            score={post.data.score}
+            created={convertDate(post.data.created_utc)}
+            isVideo={post.data.is_video}
+            isSelf={post.data.is_self}
             video="https://v.redd.it/cfoxjuc1xzy51/DASH_1080.mp4?source=fallback" // заглушка
           />
         );
       })}
+
+      {isLoading && (
+        <div style={{textAlign: 'center'}}>
+          <Text size={16} color={EColor.gray99}>Загрузка...</Text>
+        </div>
+      )}
+
+      {errorLoading && (
+        <div role='alert' style={{textAlign: 'center'}}>
+          <Text size={16} color={EColor.gray99}>{errorLoading}</Text>
+        </div>
+      )}
     </ul>
   );
 }

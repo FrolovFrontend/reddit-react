@@ -28,24 +28,30 @@ interface IPostData {
 export type TPostsData = Array<IPostData>;
 
 export function usePostsData() {
-  const [data, setData] = useState<TPostsData>([]);
+  const [posts, setPosts] = useState<TPostsData>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorLoading, serErrorLoading] = useState<string>('');
   const token = useSelector<RootState, string>(state => state.token);
 
   useEffect(() => {
     if (!token) return;
 
-    axios
-      .get(`${API_BASE_URL}/best`, {
-        headers: {Authorization: `bearer ${token}`},
-      })
-      .then((response) => {
-        const postsData = response.data.data;
-        setData(postsData.children);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    async function loadPostsData() {
+      setIsLoading(true);
+      serErrorLoading('');
+      try {
+        const {data: {data: {children}}} = await axios.get(`${API_BASE_URL}/best`, {
+          headers: {Authorization: `bearer ${token}`},
+        })
+        setPosts(children);
+      } catch (error) {
+        serErrorLoading(String(error))
+      }
+      setIsLoading(false);
+    }
+
+    loadPostsData();
   }, [token]);
 
-  return [data];
+  return {posts, isLoading, errorLoading};
 }

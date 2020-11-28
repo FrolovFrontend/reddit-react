@@ -19,7 +19,7 @@ body {
   /*padding: 0;
   margin: 0;*/
   background-color: var(--grayF4);
-  font-style: 14px;
+  font-size: 14px;
   line-height: 16px;
   font-family: 'Roboto', sans-serif;
 }
@@ -30,7 +30,7 @@ body {
   padding: 0;
   margin: 0;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-fonr-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ul {
