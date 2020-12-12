@@ -1,12 +1,12 @@
-import moment, {unix} from 'moment';
-import React, {useEffect, useRef, useState} from 'react';
-import {Card} from "./Card";
+import { locale, unix } from 'moment';
+import React, { useEffect, useRef, useState } from 'react';
+import { Card } from './Card';
 import styles from './cardslist.css';
-import {EColor, Text} from "../Text";
-import {useSelector} from "react-redux";
-import {RootState} from "../../store/reducer";
-import axios from "axios";
-import {API_BASE_URL} from "../../helpers/constants";
+import { EColor, Text } from '../Text';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/reducer';
+import axios from 'axios';
+import { API_BASE_URL } from '../../helpers/constants';
 
 export interface IPostsData {
   title: string;
@@ -37,10 +37,10 @@ export function CardsList() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorLoading, serErrorLoading] = useState<string>('');
   const token = useSelector<RootState, string>(state => state.token);
-  const bottomOfList = useRef<HTMLDivElement>(null)
+  const bottomOfList = useRef<HTMLDivElement>(null);
 
   function convertDate(epochDate: number): string {
-    moment.locale('ru');
+    locale('ru');
     const created = unix(epochDate);
     return created.utc().fromNow();
   }
@@ -57,8 +57,8 @@ export function CardsList() {
           params: {
             limit: 10,
             after: nextAfter,
-          }
-        })
+          },
+        });
         setNextAfter(after);
         setPosts(prevChildren => prevChildren.concat(...children));
       } catch (error) {
@@ -73,19 +73,19 @@ export function CardsList() {
       }
     }, {
       rootMargin: '50px',
-    })
+    });
     if (bottomOfList.current) {
-      observer.observe(bottomOfList.current)
+      observer.observe(bottomOfList.current);
     }
     return () => {
       if (bottomOfList.current) {
-        observer.unobserve(bottomOfList.current)
+        observer.unobserve(bottomOfList.current);
       }
-    }
+    };
 
     load();
 
-  }, [bottomOfList.current, token, nextAfter])
+  }, [bottomOfList.current, token, nextAfter]);
 
   return (
     <ul className={styles.cardsList}>

@@ -1,4 +1,7 @@
-import {ActionCreator} from "redux";
+import { Action, ActionCreator } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { RootState } from './reducer';
+import queryString from 'query-string';
 
 export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 
@@ -8,7 +11,7 @@ export interface IUpdateCommentAction {
 }
 
 export const updateComment: ActionCreator<IUpdateCommentAction> = (
-  text: string
+  text: string,
 ) => {
   return {
     type: UPDATE_COMMENT,
@@ -29,3 +32,15 @@ export const setToken: ActionCreator<ISetTokenAction> = (token: string) => {
     token,
   };
 };
+
+export const saveToken = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
+  const token = getState().token;
+  if (!token) {
+    const parsedHash = queryString.parse(location.hash);
+    const userToken = String(parsedHash.access_token);
+    dispatch(setToken(userToken));
+  } else if (token) {
+    dispatch(setToken(token));
+  }
+};
+
