@@ -1,7 +1,8 @@
-import {Action, ActionCreator} from 'redux';
-import {ThunkAction} from "redux-thunk";
-import {RootState} from "../reducer";
-import axios from "axios";
+import { Action, ActionCreator } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { RootState } from '../reducer';
+import axios from 'axios';
+import { API_BASE_URL } from '../../helpers/constants';
 
 export const ME_REQUEST = 'ME_REQUEST';
 
@@ -26,7 +27,7 @@ export interface IMeRequestSuccessAction {
 }
 
 export const meRequestSuccess: ActionCreator<IMeRequestSuccessAction> = (
-  data: IUserData
+  data: IUserData,
 ) => ({
   type: ME_REQUEST_SUCCESS,
   data,
@@ -40,7 +41,7 @@ export interface IMeRequestErrorAction {
 }
 
 export const meRequestError: ActionCreator<IMeRequestErrorAction> = (
-  error: string
+  error: string,
 ) => ({
   type: ME_REQUEST_ERROR,
   error,
@@ -48,7 +49,7 @@ export const meRequestError: ActionCreator<IMeRequestErrorAction> = (
 
 export const meRequestAsync = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
   dispatch(meRequest());
-  axios.get('https://oauth.reddit.com/api/v1/me', {
+  axios.get(`${API_BASE_URL}/api/v1/me`, {
     headers: {Authorization: `bearer ${getState().token}`},
   })
     .then((resp) => {
@@ -57,11 +58,11 @@ export const meRequestAsync = (): ThunkAction<void, RootState, unknown, Action<s
         meRequestSuccess({
           name: userData.name,
           iconImg: userData.icon_img,
-        })
+        }),
       );
     })
     .catch((error) => {
       console.log(error);
       dispatch(meRequestError(String(error)));
     });
-}
+};

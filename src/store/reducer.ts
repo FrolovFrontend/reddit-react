@@ -1,4 +1,4 @@
-import {Reducer} from 'redux';
+import { Reducer } from 'redux';
 import {
   IMeRequestAction,
   IMeRequestErrorAction,
@@ -7,27 +7,43 @@ import {
   ME_REQUEST_ERROR,
   ME_REQUEST_SUCCESS,
 } from './me/actions';
-import {IMeState, meReducer} from './me/reducer';
+import { IMeState, meReducer } from './me/reducer';
 import {
   ISetTokenAction,
   IUpdateCommentAction,
   SET_TOKEN,
-  UPDATE_COMMENT
-} from "./actions";
+  UPDATE_COMMENT,
+} from './actions';
+import { cardsListReducer, ICardsListState } from './cardsList/reducer';
+import {
+  CARDS_LIST_REQUEST,
+  CARDS_LIST_REQUEST_ERROR,
+  CARDS_LIST_REQUEST_SUCCESS,
+  ICardsListRequestAction,
+  ICardsListRequestErrorAction,
+  ICardsListRequestSuccessAction,
+} from './cardsList/actions';
 
 export interface RootState {
   commentText: string;
   token: string;
   me: IMeState;
+  cardsList: ICardsListState;
 }
 
-const initialState: RootState = {
+export const initialState: RootState = {
   commentText: '',
   token: '',
   me: {
     loading: false,
     error: '',
     data: {},
+  },
+  cardsList: {
+    loading: false,
+    error: '',
+    children: [],
+    after: '',
   },
 };
 
@@ -36,10 +52,13 @@ type TMyAction =
   | ISetTokenAction
   | IMeRequestAction
   | IMeRequestSuccessAction
-  | IMeRequestErrorAction;
+  | IMeRequestErrorAction
+  | ICardsListRequestAction
+  | ICardsListRequestSuccessAction
+  | ICardsListRequestErrorAction;
 export const rootReducer: Reducer<RootState, TMyAction> = (
   state = initialState,
-  action
+  action,
 ) => {
   switch (action.type) {
     case UPDATE_COMMENT:
@@ -58,6 +77,13 @@ export const rootReducer: Reducer<RootState, TMyAction> = (
       return {
         ...state,
         me: meReducer(state.me, action),
+      };
+    case CARDS_LIST_REQUEST:
+    case CARDS_LIST_REQUEST_SUCCESS:
+    case CARDS_LIST_REQUEST_ERROR:
+      return {
+        ...state,
+        cardsList: cardsListReducer(state.cardsList, action),
       };
     default:
       return state;
