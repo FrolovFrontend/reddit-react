@@ -1,43 +1,18 @@
 import { locale, unix } from 'moment';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Card } from './Card';
 import styles from './cardslist.css';
 import { EColor, Text } from '../Text';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { cardListAsync, TPostsData } from '../../store/cardsList/actions';
 import { RootState } from '../../store/reducer';
-import axios from 'axios';
-import { API_BASE_URL } from '../../helpers/constants';
-
-export interface IPostsData {
-  title: string;
-  id: string;
-  author: string;
-  thumbnail: string;
-  num_comments: number;
-  score: number;
-  created_utc: number;
-  is_video: boolean;
-  is_self: boolean;
-  media: {
-    reddit_video: {
-      fallback_url: string;
-    };
-  };
-}
-
-interface IPostData {
-  data: IPostsData;
-}
-
-export type TPostsData = Array<IPostData>;
 
 export function CardsList() {
-  const [posts, setPosts] = useState<TPostsData>([]);
-  const [nextAfter, setNextAfter] = useState('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [errorLoading, serErrorLoading] = useState<string>('');
-  const token = useSelector<RootState, string>(state => state.token);
   const bottomOfList = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
+  const posts = useSelector<RootState, TPostsData>(state => state.cardsList.children);
+  const isLoading = useSelector<RootState, boolean>(state => state.cardsList.loading);
+  const errorLoading = useSelector<RootState, string>(state => state.cardsList.error);
 
   function convertDate(epochDate: number): string {
     locale('ru');
@@ -46,35 +21,14 @@ export function CardsList() {
   }
 
   useEffect(() => {
-    if (!token) return;
-
-    async function load() {
-      setIsLoading(true);
-      serErrorLoading('');
-      try {
-        const {data: {data: {children, after}}} = await axios.get(`${API_BASE_URL}/best`, {
-          headers: {Authorization: `bearer ${token}`},
-          params: {
-            limit: 10,
-            after: nextAfter,
-          },
-        });
-        setNextAfter(after);
-        setPosts(prevChildren => prevChildren.concat(...children));
-      } catch (error) {
-        serErrorLoading(String(error));
-      }
-      setIsLoading(false);
-    }
-
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        load();
+        dispatch(cardListAsync());
       }
     }, {
       rootMargin: '50px',
     });
-    if (bottomOfList.current) {
+    if (bottomOfList.current && !isLoading && !errorLoading) {
       observer.observe(bottomOfList.current);
     }
     return () => {
@@ -82,10 +36,7 @@ export function CardsList() {
         observer.unobserve(bottomOfList.current);
       }
     };
-
-    load();
-
-  }, [bottomOfList.current, token, nextAfter]);
+  });
 
   return (
     <ul className={styles.cardsList}>
