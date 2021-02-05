@@ -4,6 +4,4 @@ node_modules/
 dist
 .DS_Store
 *.tgz
-package-lock.json
-examples
 debug.log
