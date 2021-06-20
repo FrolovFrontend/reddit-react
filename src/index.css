@@ -2,7 +2,7 @@
 
 :root {
     --black: #333333;
-    --orange: #cc6633;
+    --orange: rgb(204, 102, 51);
     --green: #a4cc33;
     --whiteLightness: 100%;
     --white: hsl(0, 0%, var(--whiteLightness));
@@ -13,6 +13,7 @@
     --grayC4: hsl(0, 0%, calc(var(--whiteLightness) - 23%));
     --gray99: hsl(0, 0%, calc(var(--whiteLightness) - 40%));
     --gray66: hsl(0, 0%, calc(var(--whiteLightness) - 60%));
+    --hover: rgba(204, 102, 51, 0.9);
 }
 
 body {
