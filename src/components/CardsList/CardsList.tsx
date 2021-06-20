@@ -1,6 +1,6 @@
 import styles from './cardslist.module.css';
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useInfinityScroll } from 'hooks/useInfinityScroll';
 import { RootState } from 'store/reducer';

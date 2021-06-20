@@ -31,6 +31,7 @@ export function Card(props: ICardProps) {
     isVideo,
     isSelf,
     video,
+    id,
   } = props;
 
   return (
@@ -40,6 +41,7 @@ export function Card(props: ICardProps) {
         userAvatar={authorAvatar}
         userName={author}
         created={created}
+        id={id}
       />
       <Preview
         previewImage={thumbnail}
