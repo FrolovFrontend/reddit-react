@@ -1,35 +1,34 @@
 import React, { ChangeEvent, FormEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { RootState } from 'store/reducer';
-import { updateComment } from 'store/actions';
+import { useRecoilState } from 'recoil';
+import { commentTextState } from 'recoilStore/commentState';
 
 import { CommentForm } from 'components/CommentForm';
 
 export function CommentFormContainer() {
-  // Получение свойства из стейта 1
-  //const store = useStore<RootState>();
-  //const value = store.getState().commentText;
+  // redux store ==============================================================
+  // const dispatch = useDispatch();
+  // const value = useSelector<RootState, string>((state) => state.commentText);
+  // function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
+  //   dispatch(updateComment(event.target.value));
+  // }
 
-  // Получение свойства из стейта 2
-  const value = useSelector<RootState, string>((state) => state.commentText);
-
-  // Получение ф-ии dispatch
-  const dispatch = useDispatch();
+  // recoil store ==============================================================
+  const [commentText, setCommentText] = useRecoilState(commentTextState);
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
-    dispatch(updateComment(event.target.value));
+    setCommentText(event.target.value);
   }
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    console.log(value);
+    console.log(commentText);
   }
 
   return (
     <CommentForm
       submitText="Комментировать"
-      value={value}
+      value={commentText}
       onChange={handleChange}
       onSubmit={handleSubmit}
     />

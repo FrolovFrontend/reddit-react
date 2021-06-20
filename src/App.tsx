@@ -15,6 +15,8 @@ import { PostsPage } from 'pages/PostsPage';
 import { PostPage } from 'pages/PostPage';
 import { NoMatch } from 'pages/NoMatch';
 
+import { RecoilRoot } from 'recoil';
+
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk)),
@@ -33,28 +35,30 @@ function App() {
 
   return (
     <Provider store={store}>
-      <Router>
-        <Layout>
-          <Header/>
-          <Switch>
-            <Route exact path="/">
-              {isLoggedIn ? <Redirect to="/posts/"/> : <HomePage/>}
-            </Route>
-            <Route path="/auth/">
-              {isLoggedIn ? <Redirect to="/posts/"/> : <HomePage/>}
-            </Route>
-            <Route exact path="/posts/">
-              {!isLoggedIn ? <Redirect to="/"/> : <PostsPage/>}
-            </Route>
-            <Route exact path="/posts/:id">
-              <PostPage/>
-            </Route>
-            <Route path="*">
-              <NoMatch/>
-            </Route>
-          </Switch>
-        </Layout>
-      </Router>
+      <RecoilRoot>
+        <Router>
+          <Layout>
+            <Header/>
+            <Switch>
+              <Route exact path="/">
+                {isLoggedIn ? <Redirect to="/posts/"/> : <HomePage/>}
+              </Route>
+              <Route path="/auth/">
+                {isLoggedIn ? <Redirect to="/posts/"/> : <HomePage/>}
+              </Route>
+              <Route exact path="/posts/">
+                {!isLoggedIn ? <Redirect to="/"/> : <PostsPage/>}
+              </Route>
+              <Route exact path="/posts/:id">
+                <PostPage/>
+              </Route>
+              <Route path="*">
+                <NoMatch/>
+              </Route>
+            </Switch>
+          </Layout>
+        </Router>
+      </RecoilRoot>
     </Provider>
   );
 }
