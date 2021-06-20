@@ -1,7 +1,10 @@
-import React, { ChangeEvent, FormEvent } from 'react';
-import { NOOP } from '../../utils/js/NOOP';
-import styles from './commentform.css';
-import { CommentOptions } from './CommentOptions';
+import styles from './commentform.module.css';
+
+import { ChangeEvent, FormEvent, ForwardedRef, forwardRef } from 'react';
+
+import { NOOP } from 'utils/js/NOOP';
+
+import { CommentOptions } from 'components/CommentForm/CommentOptions';
 
 interface ICommentFormProps {
   hasCancel?: boolean;
@@ -12,8 +15,8 @@ interface ICommentFormProps {
   onCancel?: (event: FormEvent<HTMLButtonElement>) => void;
 }
 
-export const CommentForm = React.forwardRef(
-  (props: ICommentFormProps, ref: any) => {
+export const CommentForm = forwardRef(
+  (props: ICommentFormProps, ref: ForwardedRef<HTMLTextAreaElement>) => {
     const {
       hasCancel = false,
       submitText,
@@ -32,7 +35,7 @@ export const CommentForm = React.forwardRef(
           placeholder="Оставьте ваш комментарий"
         />
         <div className={styles.controls}>
-          <CommentOptions />
+          <CommentOptions/>
           {hasCancel && (
             <button type="reset" onClick={onCancel} className={styles.cancel}>
               Отменить
@@ -44,5 +47,5 @@ export const CommentForm = React.forwardRef(
         </div>
       </form>
     );
-  }
+  },
 );

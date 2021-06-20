@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './postcontent.css';
+import styles from './postcontent.module.css';
 
 export function PostContent() {
   return (
@@ -15,7 +14,7 @@ export function PostContent() {
         несомненную пользу обществу.
       </p>
       <div>
-        <img src="https://source.unsplash.com/random" width="100%" alt="" />
+        <img src="https://source.unsplash.com/random" width="100%" alt=""/>
       </div>
     </div>
   );

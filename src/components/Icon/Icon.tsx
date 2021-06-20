@@ -1,5 +1,7 @@
-import React from 'react';
+import styles from './icon.module.css';
+
 import classNames from 'classnames';
+
 import {
   AnonIcon,
   BlockIcon,
@@ -9,8 +11,7 @@ import {
   SharedIcon,
   WarningIcon,
   RedditSelfIcon,
-} from '../Icons';
-import styles from './icon.css';
+} from 'components/Icons';
 
 export enum EIcons {
   block,
@@ -36,21 +37,21 @@ interface IIconProps {
 const getIcon = (name: EIcons) => {
   switch (name) {
     case EIcons.block:
-      return <BlockIcon />;
+      return <BlockIcon/>;
     case EIcons.comments:
-      return <CommentsIcon />;
+      return <CommentsIcon/>;
     case EIcons.menu:
-      return <MenuIcon />;
+      return <MenuIcon/>;
     case EIcons.saving:
-      return <SavingIcon />;
+      return <SavingIcon/>;
     case EIcons.shared:
-      return <SharedIcon />;
+      return <SharedIcon/>;
     case EIcons.warning:
-      return <WarningIcon />;
+      return <WarningIcon/>;
     case EIcons.anon:
-      return <AnonIcon />;
+      return <AnonIcon/>;
     case EIcons.redditSelf:
-      return <RedditSelfIcon />;
+      return <RedditSelfIcon/>;
   }
 };
 
@@ -62,7 +63,7 @@ export function Icon(props: IIconProps) {
     styles[`s${size}`],
     { [styles[`m${mobileSize}`]]: mobileSize },
     { [styles[`t${tabletSize}`]]: tabletSize },
-    { [styles[`d${desktopSize}`]]: desktopSize }
+    { [styles[`d${desktopSize}`]]: desktopSize },
   );
 
   return <div className={classes}>{getIcon(name)}</div>;

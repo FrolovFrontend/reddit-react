@@ -1,47 +1,34 @@
+import styles from './cardslist.module.css';
+
+import { useCallback, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useInfinityScroll } from 'hooks/useInfinityScroll';
+import { RootState } from 'store/reducer';
+import { TPostsData } from 'store/cardsList/actions';
+
 import { locale, unix } from 'moment';
-import React, { useEffect, useRef } from 'react';
-import { Card } from './Card';
-import styles from './cardslist.css';
-import { EColor, Text } from '../Text';
-import { useDispatch, useSelector } from 'react-redux';
-import { cardListAsync, TPostsData } from '../../store/cardsList/actions';
-import { RootState } from '../../store/reducer';
+
+import { Card } from 'components/CardsList/Card';
+import { EColor, Text } from 'components/Text';
 
 export function CardsList() {
   const bottomOfList = useRef<HTMLDivElement>(null);
-  const dispatch = useDispatch();
   const posts = useSelector<RootState, TPostsData>(state => state.cardsList.children);
   const isLoading = useSelector<RootState, boolean>(state => state.cardsList.loading);
   const errorLoading = useSelector<RootState, string>(state => state.cardsList.error);
 
-  function convertDate(epochDate: number): string {
+  const convertDate = useCallback((epochDate: number): string => {
     locale('ru');
     const created = unix(epochDate);
     return created.utc().fromNow();
-  }
+  }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        dispatch(cardListAsync());
-      }
-    }, {
-      rootMargin: '50px',
-    });
-    if (bottomOfList.current && !isLoading && !errorLoading) {
-      observer.observe(bottomOfList.current);
-    }
-    return () => {
-      if (bottomOfList.current) {
-        observer.unobserve(bottomOfList.current);
-      }
-    };
-  });
+  useInfinityScroll(bottomOfList, errorLoading, isLoading);
 
   return (
     <ul className={styles.cardsList}>
       {posts.length === 0 && !isLoading && !errorLoading && (
-        <div style={{textAlign: 'center'}}>
+        <div style={{ textAlign: 'center' }}>
           <Text size={16} color={EColor.gray99}>Нет постов</Text>
         </div>
       )}
@@ -64,16 +51,16 @@ export function CardsList() {
         );
       })}
 
-      <div ref={bottomOfList}></div>
+      <div ref={bottomOfList}/>
 
       {isLoading && (
-        <div style={{textAlign: 'center'}}>
+        <div style={{ textAlign: 'center' }}>
           <Text size={16} color={EColor.gray99}>Загрузка...</Text>
         </div>
       )}
 
       {errorLoading && (
-        <div role='alert' style={{textAlign: 'center'}}>
+        <div role='alert' style={{ textAlign: 'center' }}>
           <Text size={16} color={EColor.gray99}>{errorLoading}</Text>
         </div>
       )}

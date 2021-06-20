@@ -1,8 +1,9 @@
+import axios from 'axios';
 import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../reducer';
-import axios from 'axios';
-import { API_BASE_URL } from '../../helpers/constants';
+
+import { RootState } from 'store/reducer';
+import { API_BASE_URL } from 'helpers/constants';
 
 export const CARDS_LIST_REQUEST = 'CARDS_LIST_REQUEST';
 
@@ -66,13 +67,13 @@ export const cardListRequestError: ActionCreator<ICardsListRequestErrorAction> =
 export const cardListAsync = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
   dispatch(cardsListRequest());
   axios.get(`${API_BASE_URL}/best`, {
-    headers: {Authorization: `bearer ${getState().token}`},
+    headers: { Authorization: `bearer ${getState().token}` },
     params: {
       limit: 10,
       after: getState().cardsList.after,
     },
   }).then((response) => {
-    const {data: {data: {children, after}}} = response;
+    const { data: { data: { children, after } } } = response;
     dispatch(cardListRequestSuccess(children, after));
   }).catch((error) => {
     dispatch(cardListRequestError(String(error)));

@@ -1,5 +1,6 @@
-import React from 'react';
-import styles from './text.css';
+import styles from './text.module.css';
+import { ReactNode } from 'react';
+
 import classNames from 'classnames';
 
 export enum EColor {
@@ -20,7 +21,7 @@ type TSizes = 28 | 20 | 16 | 14 | 12 | 10;
 
 interface ITextProps {
   As?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'div';
-  children?: React.ReactNode;
+  children?: ReactNode;
   color?: EColor;
   bold?: boolean;
   size: TSizes;
@@ -47,7 +48,7 @@ export function Text(props: ITextProps) {
     { [styles.bold]: bold },
     { [styles[`m${mobileSize}`]]: mobileSize },
     { [styles[`t${tabletSize}`]]: tabletSize },
-    { [styles[`d${desktopSize}`]]: desktopSize }
+    { [styles[`d${desktopSize}`]]: desktopSize },
   );
 
   return <As className={classes}>{children}</As>;

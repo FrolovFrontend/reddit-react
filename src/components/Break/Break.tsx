@@ -1,9 +1,7 @@
-import React from "react";
-import classNames from "classnames";
-import styles from "./break.css";
+import classNames from 'classnames';
+import styles from './break.module.css';
 
 type TBreakSize = 4 | 8 | 12 | 16 | 20 | 32;
-type TDisplays = "mobile" | "tablet" | "desktop";
 
 interface IBreakProps {
   size: TBreakSize;
@@ -32,8 +30,8 @@ export function Break(props: IBreakProps) {
         { [styles[`tablet_s${mobileSize}`]]: tabletSize },
         { [styles[`desktop_s${mobileSize}`]]: desktopSize },
         { [styles.inline]: inline },
-        { [styles.top]: top }
+        { [styles.top]: top },
       )}
-    ></div>
+    />
   );
 }

@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from './textcontent.css';
-import { MetaData } from './MetaData';
-import { Title } from './Title';
+import styles from './textcontent.module.css';
+
+import { MetaData } from 'components/CardsList/Card/TextContent/MetaData';
+import { Title } from 'components/CardsList/Card/TextContent/Title';
 
 interface ITextContentProps {
   userAvatar: string;
@@ -14,8 +14,8 @@ export function TextContent(props: ITextContentProps) {
   const { userAvatar, userName, title, created } = props;
   return (
     <div className={styles.textContent}>
-      <MetaData imgPath={userAvatar} userName={userName} created={created} />
-      <Title title={title} />
+      <MetaData imgPath={userAvatar} userName={userName} created={created}/>
+      <Title title={title}/>
     </div>
   );
 }

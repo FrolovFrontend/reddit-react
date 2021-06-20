@@ -1,8 +1,10 @@
 import React, { ChangeEvent, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/reducer';
-import { CommentForm } from '../CommentForm/CommentForm';
-import {updateComment} from "../../store/actions";
+
+import { RootState } from 'store/reducer';
+import { updateComment } from 'store/actions';
+
+import { CommentForm } from 'components/CommentForm';
 
 export function CommentFormContainer() {
   // Получение свойства из стейта 1

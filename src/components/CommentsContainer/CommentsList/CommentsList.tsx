@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './commentslist.css';
+import styles from './commentslist.module.css';
 
 interface ICommentsListProps {
   comment: React.ReactNode;

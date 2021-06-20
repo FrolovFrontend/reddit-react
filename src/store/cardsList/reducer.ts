@@ -1,3 +1,5 @@
+import { Reducer } from 'redux';
+
 import {
   CARDS_LIST_REQUEST,
   CARDS_LIST_REQUEST_ERROR,
@@ -6,9 +8,8 @@ import {
   ICardsListRequestErrorAction,
   ICardsListRequestSuccessAction,
   TPostsData,
-} from './actions';
-import { Reducer } from 'redux';
-import { initialState } from '../reducer';
+} from 'store/cardsList/actions';
+import { initialState } from 'store/reducer';
 
 export interface ICardsListState {
   loading: boolean;

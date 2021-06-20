@@ -1,20 +1,20 @@
+import styles from './menuitemslist.module.css';
+
 import classNames from 'classnames';
-import React from 'react';
-import { merge } from '../../../../../utils/js/merge';
-import { generateId } from '../../../../../utils/react/generateRandomIndex';
-import {
-  GenericList,
-  IGenericListItem,
-} from '../../../../GenericList/GenericList';
-import { EIcons, Icon } from '../../../../Icon';
-import { EColor, Text } from '../../../../Text';
-import styles from './menuitemslist.css';
+import { useState } from 'react';
+
+import { merge } from 'utils/js/merge';
+import { generateId } from 'utils/react/generateRandomIndex';
+
+import { GenericList, IGenericListItem } from 'components/GenericList/GenericList';
+import { EIcons, Icon } from 'components/Icon';
+import { EColor, Text } from 'components/Text';
 
 const ITEMS_LIST: IGenericListItem[] = [
   {
     As: 'li' as const,
     className: classNames(styles.menuItem, styles.menuItemComments),
-    icon: <Icon name={EIcons.comments} size={14} />,
+    icon: <Icon name={EIcons.comments} size={14}/>,
     text: (
       <Text size={14} mobileSize={12} color={EColor.gray99}>
         Комментарии
@@ -24,7 +24,7 @@ const ITEMS_LIST: IGenericListItem[] = [
   {
     As: 'li' as const,
     className: classNames(styles.menuItem, styles.menuItemShared),
-    icon: <Icon name={EIcons.shared} size={14} />,
+    icon: <Icon name={EIcons.shared} size={14}/>,
     text: (
       <Text size={14} mobileSize={12} color={EColor.gray99}>
         Поделиться
@@ -34,7 +34,7 @@ const ITEMS_LIST: IGenericListItem[] = [
   {
     As: 'li' as const,
     className: styles.menuItem,
-    icon: <Icon name={EIcons.block} size={14} />,
+    icon: <Icon name={EIcons.block} size={14}/>,
     text: (
       <Text size={14} mobileSize={12} color={EColor.gray99}>
         Скрыть
@@ -44,7 +44,7 @@ const ITEMS_LIST: IGenericListItem[] = [
   {
     As: 'li' as const,
     className: classNames(styles.menuItem, styles.menuItemSave),
-    icon: <Icon name={EIcons.saving} size={14} />,
+    icon: <Icon name={EIcons.saving} size={14}/>,
     text: (
       <Text size={14} mobileSize={12} color={EColor.gray99}>
         Сохранить
@@ -54,7 +54,7 @@ const ITEMS_LIST: IGenericListItem[] = [
   {
     As: 'li' as const,
     className: styles.menuItem,
-    icon: <Icon name={EIcons.warning} size={14} />,
+    icon: <Icon name={EIcons.warning} size={14}/>,
     text: (
       <Text size={14} mobileSize={12} color={EColor.gray99}>
         Пожаловаться
@@ -68,13 +68,13 @@ interface IMenuItemsListProps {
 }
 
 export function MenuItemsList({ postId }: IMenuItemsListProps) {
-  const [list] = React.useState(ITEMS_LIST);
+  const [list] = useState(ITEMS_LIST);
 
   const handleClickItem = () => console.log(postId);
 
   return (
     <ul className={styles.menuItemsList}>
-      <GenericList list={list.map(merge({ onClick: handleClickItem }))} />
+      <GenericList list={list.map(merge({ onClick: handleClickItem }))}/>
     </ul>
   );
 }

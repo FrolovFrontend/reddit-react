@@ -1,4 +1,4 @@
-import {Reducer} from 'react';
+import { Reducer } from 'react';
 import {
   IMeRequestAction,
   IMeRequestErrorAction,
@@ -7,7 +7,7 @@ import {
   ME_REQUEST,
   ME_REQUEST_ERROR,
   ME_REQUEST_SUCCESS,
-} from './actions';
+} from 'store/me/actions';
 
 export interface IMeState {
   loading: boolean;

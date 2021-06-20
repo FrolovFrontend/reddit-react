@@ -1,9 +1,9 @@
-import React from 'react';
-import styles from './card.css';
-import { Controls } from './Controls';
-import { Menu } from './Menu';
-import { Preview } from './Preview';
-import { TextContent } from './TextContent';
+import styles from './card.module.css';
+
+import { Controls } from 'components/CardsList/Card/Controls';
+import { Menu } from 'components/CardsList/Card/Menu';
+import { Preview } from 'components/CardsList/Card/Preview';
+import { TextContent } from 'components/CardsList/Card/TextContent';
 
 export interface ICardProps {
   title: string;
@@ -48,8 +48,8 @@ export function Card(props: ICardProps) {
         isSelf={isSelf}
         thumbnail={thumbnail}
       />
-      <Menu />
-      <Controls numComments={num_comments} score={score} />
+      <Menu/>
+      <Controls numComments={num_comments} score={score}/>
     </li>
   );
 }

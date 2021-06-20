@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Post } from '../../../../Post';
-import styles from './title.css';
+import styles from './title.module.css';
+
+import { useEffect, useState } from 'react';
+
+import { Post } from 'components/Post';
 
 interface ITitleProps {
   title: string;
@@ -21,7 +23,7 @@ export function Title({ title }: ITitleProps) {
 
   return (
     <h2 className={styles.title}>
-      <a className={styles.postLink} onClick={() => setIsModalOpen(true)}>
+      <a className={styles.postLink} href="post" onClick={() => setIsModalOpen(true)}>
         {title}
       </a>
 
