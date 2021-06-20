@@ -1,39 +1,18 @@
 import styles from './title.module.css';
 
-import { useEffect, useState } from 'react';
-
-import { Post } from 'components/Post';
+import { Link } from 'react-router-dom';
 
 interface ITitleProps {
   title: string;
+  id: string;
 }
 
-export function Title({ title }: ITitleProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    const body = document.querySelector('body');
-
-    if (isModalOpen && body) {
-      body.style.overflow = 'hidden';
-    } else if (!isModalOpen && body) {
-      body.style.overflow = 'auto';
-    }
-  }, [isModalOpen]);
-
+export function Title({ title, id }: ITitleProps) {
   return (
     <h2 className={styles.title}>
-      <a className={styles.postLink} href="post" onClick={() => setIsModalOpen(true)}>
+      <Link className={styles.postLink} to={`/posts/${id}/`}>
         {title}
-      </a>
-
-      {isModalOpen && (
-        <Post
-          onClose={() => {
-            setIsModalOpen(false);
-          }}
-        />
-      )}
+      </Link>
     </h2>
   );
 }

@@ -1,5 +1,7 @@
 import styles from './userblock.module.css';
 
+import { AUTH_LINK } from 'helpers/constants';
+
 import { Break } from 'components/Break';
 import { EIcons, Icon } from 'components/Icon';
 import { EColor, Text } from 'components/Text';
@@ -13,7 +15,7 @@ interface IUserBlockProps {
 export function UserBlock({ avatarSrc, username, loading }: IUserBlockProps) {
   return (
     <a
-      href={`https://www.reddit.com/api/v1/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&state=random_string&redirect_uri=${process.env.REACT_APP_HOST}/auth&scope=read submit identity`}
+      href={AUTH_LINK}
       className={styles.userBox}
     >
       <div className={styles.avatarBox}>
