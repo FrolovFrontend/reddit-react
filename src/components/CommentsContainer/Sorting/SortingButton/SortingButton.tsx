@@ -1,7 +1,8 @@
+import styles from './sortingbutton.module.css';
+
 import classNames from 'classnames';
-import React from 'react';
-import { EColor, Text } from '../../../Text';
-import styles from './sortingbutton.css';
+
+import { EColor, Text } from 'components/Text';
 
 interface ISortingProps {
   isActive: boolean;

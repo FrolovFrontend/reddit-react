@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "./content.css";
+import styles from './content.module.css';
+import { ReactNode } from 'react';
 
 interface IContentProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function Content({ children }: IContentProps) {

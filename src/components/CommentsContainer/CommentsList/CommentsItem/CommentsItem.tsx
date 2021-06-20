@@ -1,3 +1,5 @@
+import styles from './commentsitem.module.css';
+
 import React, {
   ChangeEvent,
   FormEvent,
@@ -5,13 +7,13 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { Break } from '../../../Break';
-import { KarmaCounter } from '../../../CardsList/Card/Controls/KarmaCounter';
-import { CommentForm } from '../../../CommentForm';
-import { Text } from '../../../Text';
-import { CommentMetaData } from './CommentMetaData';
-import { CommentsActions } from './CommentsActions';
-import styles from './commentsitem.css';
+
+import { Break } from 'components/Break';
+import { KarmaCounter } from 'components/CardsList/Card/Controls/KarmaCounter';
+import { CommentForm } from 'components/CommentForm';
+import { Text } from 'components/Text';
+import { CommentMetaData } from 'components/CommentsContainer/CommentsList/CommentsItem/CommentMetaData';
+import { CommentsActions } from 'components/CommentsContainer/CommentsList/CommentsItem/CommentsActions';
 
 interface ICommentItemState {
   isReplay: boolean;
@@ -33,7 +35,7 @@ export function CommentsItem({ userName }: ICommentItemProps) {
       textareaRef.current?.focus();
       setState((state) => ({ ...state, value: `${userName}, ` }));
     }
-  }, [state.isReplay]);
+  }, [state.isReplay, userName]);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -63,7 +65,7 @@ export function CommentsItem({ userName }: ICommentItemProps) {
   return (
     <li className={styles.commentItem}>
       <div className={styles.karmaCounter}>
-        <KarmaCounter score={null} />
+        <KarmaCounter score={null}/>
       </div>
       <CommentMetaData
         created="2 часа назад"
@@ -71,13 +73,13 @@ export function CommentsItem({ userName }: ICommentItemProps) {
         imgPath="https://source.unsplash.com/random"
         league="Лига социологов"
       />
-      <Break size={8} top />
+      <Break size={8} top/>
       <Text As="p" size={14}>
         Сторонники тоталитаризма в науке будут объективно рассмотрены
         соответствующими инстанциями. Лишь реплицированные с зарубежных
         источников, современные исследования будут описаны максимально подробно.
       </Text>
-      <Break size={12} top />
+      <Break size={12} top/>
       <CommentsActions
         onCLickReplay={handleReplay}
         onCLickShared={handleShared}
@@ -85,7 +87,7 @@ export function CommentsItem({ userName }: ICommentItemProps) {
       />
       {state.isReplay && (
         <div className={styles.commentForm}>
-          <Break size={20} top />
+          <Break size={20} top/>
           <CommentForm
             onChange={handleChange}
             onSubmit={handleSubmit}

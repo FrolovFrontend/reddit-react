@@ -1,9 +1,9 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 export interface IGenericListItem {
   id: string;
-  icon?: React.ReactNode;
-  text: string | React.ReactNode;
+  icon?: ReactNode;
+  text: string | ReactNode;
   onClick?: (id: string) => void;
   className?: string;
   As?: 'a' | 'li' | 'button' | 'div';

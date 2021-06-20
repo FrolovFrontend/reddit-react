@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './createdat.css';
+import styles from './createdat.module.css';
 
 interface ICreatedAtProps {
   created: string;

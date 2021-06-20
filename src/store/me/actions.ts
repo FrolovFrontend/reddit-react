@@ -1,8 +1,10 @@
+import axios from 'axios';
+
 import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../reducer';
-import axios from 'axios';
-import { API_BASE_URL } from '../../helpers/constants';
+
+import { RootState } from 'store/reducer';
+import { API_BASE_URL } from 'helpers/constants';
 
 export const ME_REQUEST = 'ME_REQUEST';
 
@@ -50,7 +52,7 @@ export const meRequestError: ActionCreator<IMeRequestErrorAction> = (
 export const meRequestAsync = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
   dispatch(meRequest());
   axios.get(`${API_BASE_URL}/api/v1/me`, {
-    headers: {Authorization: `bearer ${getState().token}`},
+    headers: { Authorization: `bearer ${getState().token}` },
   })
     .then((resp) => {
       const userData = resp.data;

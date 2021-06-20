@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './commentsbutton.css';
+import styles from './commentsbutton.module.css';
 
 interface ICommentsButtonProps {
   numComments: number;

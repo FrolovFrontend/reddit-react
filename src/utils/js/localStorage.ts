@@ -9,9 +9,11 @@ export const loadState = () => {
     return undefined;
   }
 };
+
 interface IState {
   token: string;
 }
+
 export const saveState = (state: IState) => {
   try {
     const serializedState = JSON.stringify(state);

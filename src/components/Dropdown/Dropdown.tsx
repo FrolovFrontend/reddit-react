@@ -1,35 +1,29 @@
-import React from 'react';
-import { NOOP } from '../../utils/js/NOOP';
-import styles from './dropdown.css';
+import styles from './dropdown.module.css';
+
+import { NOOP } from 'utils/js/NOOP';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface IDropDownProps {
-  button: React.ReactNode;
-  children: React.ReactNode;
+  button: ReactNode;
+  children: ReactNode;
   isOpen?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
 }
 
-/**
- * Функция ничего не делает
- * (служит значением по умолчанию для не обязательных методов)
- */
+export function Dropdown(props: IDropDownProps) {
+  const {
+    button,
+    children,
+    isOpen,
+    onOpen = NOOP,
+    onClose = NOOP,
+  } = props;
 
-/**
- * Компонент реализует логику выпадения чего угодно из чего угодно
- */
-export function Dropdown({
-  button,
-  children,
-  isOpen,
-  onOpen = NOOP,
-  onClose = NOOP,
-}: IDropDownProps) {
-  const [isDropDownOpen, setIsDropDownOpen] = React.useState(isOpen);
-  React.useEffect(() => setIsDropDownOpen(isOpen), [isOpen]);
-  React.useEffect(() => (isDropDownOpen ? onOpen() : onClose()), [
-    isDropDownOpen,
-  ]);
+  const [isDropDownOpen, setIsDropDownOpen] = useState(isOpen);
+
+  useEffect(() => setIsDropDownOpen(isOpen), [isOpen]);
+  useEffect(() => (isDropDownOpen ? onOpen() : onClose()), [isDropDownOpen, onClose, onOpen]);
 
   const handleOpen = () => {
     if (isOpen === undefined) {

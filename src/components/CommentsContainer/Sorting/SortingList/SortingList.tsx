@@ -1,12 +1,12 @@
-import React, { MouseEvent, useState } from 'react';
-import { merge } from '../../../../utils/js/merge';
-import { generateId } from '../../../../utils/react/generateRandomIndex';
-import {
-  GenericList,
-  IGenericListItem,
-} from '../../../GenericList/GenericList';
-import { EColor, Text } from '../../../Text';
-import styles from './sortinglist.css';
+import styles from './sortinglist.module.css';
+
+import { useState } from 'react';
+
+import { merge } from 'utils/js/merge';
+import { generateId } from 'utils/react/generateRandomIndex';
+
+import { GenericList, IGenericListItem } from 'components/GenericList/GenericList';
+import { EColor, Text } from 'components/Text';
 
 const SORTING_ITEMS: IGenericListItem[] = [
   {
@@ -56,7 +56,7 @@ export function SortingList() {
 
   return (
     <ul className={styles.sortinglist}>
-      <GenericList list={list.map(merge({ onClick: handleItemClick }))} />
+      <GenericList list={list.map(merge({ onClick: handleItemClick }))}/>
     </ul>
   );
 }

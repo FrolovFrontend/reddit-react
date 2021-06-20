@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Dropdown } from '../../Dropdown';
-import styles from './sorting.css';
-import { SortingButton } from './SortingButton';
-import { SortingList } from './SortingList';
+import styles from './sorting.module.css';
+
+import { useState } from 'react';
+
+import { Dropdown } from 'components/Dropdown';
+import { SortingButton } from 'components/CommentsContainer/Sorting/SortingButton';
+import { SortingList } from 'components/CommentsContainer/Sorting/SortingList';
 
 export function Sorting() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -13,11 +15,11 @@ export function Sorting() {
       <Dropdown
         isOpen={isDropdownOpen}
         button={
-          <SortingButton currentOption="Лучшие" isActive={isDropdownOpen} />
+          <SortingButton currentOption="Лучшие" isActive={isDropdownOpen}/>
         }
       >
         <div className={styles.dropdown}>
-          <SortingList />
+          <SortingList/>
         </div>
       </Dropdown>
     </div>

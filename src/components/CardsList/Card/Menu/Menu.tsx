@@ -1,9 +1,9 @@
-import React from 'react';
-import { Dropdown } from '../../../Dropdown';
-import { MenuIcon } from '../../../Icons';
-import { EColor, Text } from '../../../Text';
-import styles from './menu.css';
-import { MenuItemsList } from './MenuItemsList';
+import styles from './menu.module.css';
+
+import { Dropdown } from 'components/Dropdown';
+import { MenuIcon } from 'components/Icons';
+import { EColor, Text } from 'components/Text';
+import { MenuItemsList } from 'components/CardsList/Card/Menu/MenuItemsList';
 
 export function Menu() {
   return (
@@ -11,12 +11,12 @@ export function Menu() {
       <Dropdown
         button={
           <button className={styles.menuButton}>
-            <MenuIcon />
+            <MenuIcon/>
           </button>
         }
       >
         <div className={styles.dropdown}>
-          <MenuItemsList postId="#id" />
+          <MenuItemsList postId="#id"/>
           <button className={styles.closeButton}>
             <Text size={14} mobileSize={12} color={EColor.gray66}>
               Закрыть

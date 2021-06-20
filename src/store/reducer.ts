@@ -6,15 +6,15 @@ import {
   ME_REQUEST,
   ME_REQUEST_ERROR,
   ME_REQUEST_SUCCESS,
-} from './me/actions';
-import { IMeState, meReducer } from './me/reducer';
+} from 'store/me/actions';
+import { IMeState, meReducer } from 'store/me/reducer';
 import {
   ISetTokenAction,
   IUpdateCommentAction,
   SET_TOKEN,
   UPDATE_COMMENT,
-} from './actions';
-import { cardsListReducer, ICardsListState } from './cardsList/reducer';
+} from 'store/actions';
+import { cardsListReducer, ICardsListState } from 'store/cardsList/reducer';
 import {
   CARDS_LIST_REQUEST,
   CARDS_LIST_REQUEST_ERROR,
@@ -22,7 +22,7 @@ import {
   ICardsListRequestAction,
   ICardsListRequestErrorAction,
   ICardsListRequestSuccessAction,
-} from './cardsList/actions';
+} from 'store/cardsList/actions';
 
 export interface RootState {
   commentText: string;

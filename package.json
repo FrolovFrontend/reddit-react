@@ -1,60 +1,53 @@
 {
-  "name": "reddit-react",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "my-app",
+  "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development CLIENT_ID=dVljzOnBep39Dw webpack-dev-server",
-    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "test": "jest"
+    "start": "node_modules/.bin/react-scripts start",
+    "build": "node_modules/.bin/react-scripts build",
+    "test": "node_modules/.bin/react-scripts test",
+    "eject": "node_modules/.bin/react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FrolovFrontend/reddit-react.git"
-  },
-  "author": "Maxim Frolov",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/FrolovFrontend/reddit-react/issues"
-  },
-  "homepage": "https://github.com/FrolovFrontend/reddit-react#readme",
+  "version": "0.1.0",
+  "homepage": "./",
   "devDependencies": {
-    "@types/classnames": "^2.2.10",
-    "@types/enzyme": "^3.10.7",
-    "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/jest": "^26.0.13",
-    "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-redux": "^7.1.9",
-    "@types/react-router-dom": "^5.1.6",
-    "classnames": "^2.2.6",
-    "cross-env": "^7.0.2",
-    "css-loader": "^4.3.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.5",
-    "enzyme-to-json": "^3.5.0",
-    "html-webpack-plugin": "^4.4.1",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.4.2",
-    "query-string": "^6.13.5",
-    "redux-devtools-extension": "^2.13.8",
-    "style-loader": "^1.2.1",
-    "ts-jest": "^26.3.0",
-    "ts-loader": "^8.0.3",
-    "typescript": "^4.0.2",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "@types/node": "12.0.0",
+    "@types/react": "17.0.0",
+    "@types/react-dom": "17.0.0",
+    "@types/react-redux": "7.1.16",
+    "@types/react-router-dom": "5.1.7",
+    "redux-devtools-extension": "^2.13.9"
   },
   "dependencies": {
-    "axios": "^0.20.0",
-    "moment": "^2.29.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.1",
-    "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "axios": "0.21.1",
+    "classnames": "2.3.1",
+    "moment": "2.29.1",
+    "query-string": "7.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-redux": "7.2.4",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "4.0.3",
+    "redux": "4.1.0",
+    "redux-thunk": "2.3.0",
+    "typescript": "4.1.2",
+    "web-vitals": "1.0.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

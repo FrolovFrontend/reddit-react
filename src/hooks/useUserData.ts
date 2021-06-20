@@ -1,7 +1,7 @@
-import {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {IUserData, meRequestAsync} from '../store/me/actions';
-import {RootState} from '../store/reducer';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { IUserData, meRequestAsync } from 'store/me/actions';
+import { RootState } from 'store/reducer';
 
 export function useUserData() {
   const data = useSelector<RootState, IUserData>((state) => state.me.data);
@@ -12,11 +12,11 @@ export function useUserData() {
 
   useEffect(() => {
     if (!token) return;
-    dispatch(meRequestAsync())
-  }, [token]);
+    dispatch(meRequestAsync());
+  }, [token, dispatch]);
 
   return {
     data,
-    loading
+    loading,
   };
 }

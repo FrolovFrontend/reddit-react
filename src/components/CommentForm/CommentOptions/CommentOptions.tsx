@@ -1,4 +1,5 @@
-import React from 'react';
+import styles from './commentoptions.module.css';
+
 import {
   CommentCodeIcon,
   CommentDocIcon,
@@ -6,8 +7,7 @@ import {
   CommentImageIcon,
   CommentLinkIcon,
   CommentProfileIcon,
-} from '../../Icons';
-import styles from './commentoptions.css';
+} from 'components/Icons';
 
 export function CommentOptions() {
   return (
@@ -15,32 +15,32 @@ export function CommentOptions() {
       <ul className={styles.list}>
         <li className={styles.item}>
           <button>
-            <CommentCodeIcon />
+            <CommentCodeIcon/>
           </button>
         </li>
         <li className={styles.item}>
           <button>
-            <CommentImageIcon />
+            <CommentImageIcon/>
           </button>
         </li>
         <li className={styles.item}>
           <button>
-            <CommentDocIcon />
+            <CommentDocIcon/>
           </button>
         </li>
         <li className={styles.item}>
           <button>
-            <CommentDownloadIcon />
+            <CommentDownloadIcon/>
           </button>
         </li>
         <li className={styles.item}>
           <button>
-            <CommentProfileIcon />
+            <CommentProfileIcon/>
           </button>
         </li>
         <li className={styles.item}>
           <button>
-            <CommentLinkIcon />
+            <CommentLinkIcon/>
           </button>
         </li>
       </ul>

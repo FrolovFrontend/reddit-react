@@ -1,8 +1,8 @@
-import React from 'react';
-import styles from './preview.css';
-import { Image } from './Image';
-import { Self } from './Self';
-import { Video } from './Video';
+import styles from './preview.module.css';
+
+import { Image } from 'components/CardsList/Card/Preview/Image';
+import { Self } from 'components/CardsList/Card/Preview/Self';
+import { Video } from 'components/CardsList/Card/Preview/Video';
 
 interface IPreviewProps {
   previewImage: string;
@@ -12,36 +12,38 @@ interface IPreviewProps {
   thumbnail: string;
 }
 
-export function Preview({
-  previewImage,
-  previewVideo,
-  isVideo,
-  isSelf,
-  thumbnail,
-}: IPreviewProps) {
+export function Preview(props: IPreviewProps) {
+  const {
+    previewImage,
+    previewVideo,
+    isVideo,
+    isSelf,
+    thumbnail,
+  } = props;
+
   if (isVideo) {
     return (
       <div className={styles.preview}>
-        <Video videoPath={previewVideo} />
+        <Video videoPath={previewVideo}/>
       </div>
     );
   } else if (isSelf) {
     return (
       <div className={styles.preview}>
-        <Self />
+        <Self/>
       </div>
     );
   } else {
     if (thumbnail === 'default' || thumbnail === 'image') {
       return (
         <div className={styles.preview}>
-          <Self />
+          <Self/>
         </div>
       );
     } else {
       return (
         <div className={styles.preview}>
-          <Image imagePath={previewImage} />
+          <Image imagePath={previewImage}/>
         </div>
       );
     }

@@ -1,14 +1,10 @@
-import React from "react";
-import styles from "./layout.css";
+import styles from './layout.module.css';
+import { ReactNode } from 'react';
 
 interface ILayoutProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
-/**
- * Компонент будет рендерить дочерние компоненты
- * без привязки к конкретным компонентам
- */
 export function Layout({ children }: ILayoutProps) {
   return <div className={styles.layout}>{children}</div>;
 }

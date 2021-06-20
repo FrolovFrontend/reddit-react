@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './video.css';
+import styles from './video.module.css';
 
 interface IVideoProps {
   videoPath: string;
@@ -13,6 +12,6 @@ export function Video({ videoPath }: IVideoProps) {
       autoPlay
       loop
       controls={false}
-    ></video>
+    />
   );
 }
