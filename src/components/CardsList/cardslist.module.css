@@ -1,3 +1,16 @@
+.loadButton {
+  width: 100%;
+  padding: 24px;
+  background-color: var(--orange);
+  color: var(--white);
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.loadButton:hover {
+  background-color: var(--hover);
+}
+
 @media all and (min-width: 1024px) {
   .cardsList {
     padding: 40px 0;
