@@ -8,14 +8,15 @@ interface ITextContentProps {
   userName: string;
   title: string;
   created: string;
+  id: string;
 }
 
 export function TextContent(props: ITextContentProps) {
-  const { userAvatar, userName, title, created } = props;
+  const { userAvatar, userName, title, created, id } = props;
   return (
     <div className={styles.textContent}>
       <MetaData imgPath={userAvatar} userName={userName} created={created}/>
-      <Title title={title}/>
+      <Title title={title} id={id}/>
     </div>
   );
 }

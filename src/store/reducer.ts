@@ -27,6 +27,7 @@ import {
 export interface RootState {
   commentText: string;
   token: string;
+  loggedIn: boolean;
   me: IMeState;
   cardsList: ICardsListState;
 }
@@ -34,6 +35,7 @@ export interface RootState {
 export const initialState: RootState = {
   commentText: '',
   token: '',
+  loggedIn: false,
   me: {
     loading: false,
     error: '',
@@ -70,6 +72,7 @@ export const rootReducer: Reducer<RootState, TMyAction> = (
       return {
         ...state,
         token: action.token,
+        loggedIn: action.token !== 'undefined',
       };
     case ME_REQUEST:
     case ME_REQUEST_SUCCESS:
